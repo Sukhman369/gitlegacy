@@ -136,7 +136,7 @@ export default function BadgesStudioPage() {
 
   // Tech Stack Basket State
   const [selectedBadges, setSelectedBadges] = useState<string[]>([]);
-  const [basketFormat, setBasketFormat] = useState<'centered-html' | 'multiline-md' | 'inline-md'>('centered-html');
+  const [basketFormat, setBasketFormat] = useState<'left-html' | 'centered-html' | 'multiline-md' | 'inline-md'>('left-html');
 
   React.useEffect(() => {
     setVisibleCount(16);
@@ -178,7 +178,15 @@ export default function BadgesStudioPage() {
     const selectedObjects = TECH_BADGES.filter((b) => selectedBadges.includes(b.name));
     let outputText = '';
 
-    if (basketFormat === 'centered-html') {
+    if (basketFormat === 'left-html') {
+      const imgTags = selectedObjects
+        .map(
+          (b) =>
+            `  <a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer"><img src="${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white" alt="${b.name}" /></a>`
+        )
+        .join('\n');
+      outputText = `<p align="left">\n${imgTags}\n</p>`;
+    } else if (basketFormat === 'centered-html') {
       const imgTags = selectedObjects
         .map(
           (b) =>
@@ -369,7 +377,8 @@ export default function BadgesStudioPage() {
                   }`}
                   title="Output Format for GitHub README"
                 >
-                  <option value="centered-html">Format: &lt;p align="center"&gt; (Clean Profile Grid)</option>
+                  <option value="left-html">Format: &lt;p align="left"&gt; (Left-Aligned Grid - Default)</option>
+                  <option value="centered-html">Format: &lt;p align="center"&gt; (Centered Grid)</option>
                   <option value="multiline-md">Format: Multiline Markdown (\n)</option>
                   <option value="inline-md">Format: Single-Line Inline</option>
                 </select>
