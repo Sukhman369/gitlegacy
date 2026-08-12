@@ -16,6 +16,114 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: 'github-badges',
+    title: 'The Ultimate Guide to GitHub Readme Badges: How to Use a GitHub Badge Generator for Markdown Profiles (Includes GitHub Pro Badge)',
+    excerpt:
+      'Discover how to design custom github readme badges, build tech stack baskets with a github badge generator, add a verified github pro badge, and format clean github markdown badges for your profile.',
+    publishedAt: 'August 12, 2026',
+    readTime: '6 min read',
+    author: {
+      name: 'Sukhman',
+      role: 'Creator of GitLegacy',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
+    },
+    tags: ['GitHub Badges', 'GitHub Readme Badges', 'Badge Generator', 'GitHub Pro Badge', 'Markdown'],
+    featured: true,
+    content: `
+### Introduction
+
+Your GitHub profile README is your digital resume, developer portfolio, and personal landing page. When recruiters, hiring managers, or open-source collaborators visit your profile, visual elements like **github readme badges** instantly highlight your tech stack, project activity, and developer identity.
+
+Whether you want to build a tech stack grid with a free **github badge generator**, display a verified **github pro badge**, or organize clean **github markdown badges**, this comprehensive guide walks you step-by-step through customizing your profile using the free [GitLegacy Developer Badge Studio](/tools/github-badges).
+
+---
+
+### Why GitHub Readme Badges Matter for Developer Profiles
+
+In a sea of standard developer profiles, high-contrast **github badges** transform plain text lists into a structured, executive dashboard.
+
+Adding **github markdown badges** to your profile README provides key advantages:
+
+- **Instant Tech Stack Recognition**: Showcase your proficiency in Next.js, React, Python, TypeScript, Docker, AWS, or PostgreSQL without requiring visitors to read every repository.
+- **Project & Build Transparency**: Display real-time status indicators like build passing, MIT license, PRs welcome, and deployment health directly inside repository READMEs.
+- **Clean Profile Formatting**: Replace messy bulleted text with aligned, retina-ready SVG shields and centered HTML badge baskets.
+
+---
+
+### Top Categories of GitHub Markdown Badges
+
+Organizing your **github readme badges** into clear categories helps structure your developer story effectively:
+
+#### 1. Curated Tech Stack & Framework Badges
+Display your core frontend, backend, mobile app development, database, and DevOps tools. Highlight frameworks like React, Laravel, CodeIgniter, Flutter, and TailwindCSS.
+
+#### 2. Developer Identity & Status Shields
+Use custom status shields to communicate your availability (e.g., "Open for Hire", "PRs Welcome", or your verified **github pro badge**).
+
+#### 3. Digital Marketing & SEO Badges
+For full-stack or growth developers, display specialized tech stack icons for WordPress, Google Analytics, SEO, Semrush, and Meta Ads.
+
+#### 4. Social & Portfolio Connectors
+Add direct badge buttons linking to your X (Twitter), LinkedIn, YouTube channel, Dev.to blog, or personal portfolio site.
+
+---
+
+### How to Add a Verified GitHub Pro Badge to Your Profile README
+
+A common request among developers is displaying a **github pro badge** inside their profile README. While GitHub displays a default Pro badge in your profile sidebar, adding a custom SVG shield inside your \`README.md\` ensures your PRO status is visible across social embeds, portfolio exports, and repository docs.
+
+Here is the exact **github markdown badges** snippet to display a PRO badge:
+
+\`\`\`markdown
+[![GitHub Pro](https://gitlegacy.co/api/badge/shield?label=GitHub&message=PRO&color=10b981&style=for-the-badge&logo=github&logoColor=white)](https://gitlegacy.co/tools/github-badges)
+\`\`\`
+
+Or as a clean HTML centered grid element:
+
+\`\`\`html
+<p align="center">
+  <a href="https://gitlegacy.co/tools/github-badges" target="_blank" rel="noopener noreferrer">
+    <img src="https://gitlegacy.co/api/badge/shield?label=GitHub&message=PRO&color=10b981&style=for-the-badge&logo=github&logoColor=white" alt="GitHub Pro Badge" />
+  </a>
+</p>
+\`\`\`
+
+You can customize the color palette, shield style (\`for-the-badge\`, \`flat\`, \`flat-square\`, \`plastic\`), and logo icon using the [GitHub Badge Generator](/tools/github-badges).
+
+---
+
+### Building Custom Shields with a Free GitHub Badge Generator
+
+Manually writing Shields.io URLs or debugging image Markdown syntax can be tedious. A visual **github badge generator** like [GitLegacy Developer Badge Studio](/tools/github-badges) streamlines the process:
+
+1. **Browse 50+ Curated Tech Stack Icons**: Filter by Frontend, Backend, Mobile Application Development, Databases, and DevOps.
+2. **1-Click Stack Basket**: Select multiple technologies and instantly copy a single formatted \`<p align="center">\` HTML block to prevent source code clutter.
+3. **5 Visual Badge Styles**: Instantly switch between \`for-the-badge\`, \`flat\`, \`flat-square\`, \`plastic\`, and \`social\` styles.
+4. **Custom Status Shield Generator**: Enter custom label text, message text, custom hex colors, and brand logo icons.
+
+Try the free interactive [GitHub Badge Generator](/tools/github-badges) on GitLegacy now!
+
+---
+
+### Complete GitHub Profile Ecosystem: Elevating Your Developer Brand
+
+Badges are essential, but combining them with other visual profile elements creates an unforgettable developer impression:
+
+- **[GitHub Contribution Art Studio](/tools/art-studio)**: Turn your 53-week contribution graph into pixel-perfect artwork, retro arcade designs, or custom typography.
+- **[Real GitHub History Visualizer](/tools/history-visualizer)**: Generate high-resolution 4K Retina posters of your multi-year GitHub contribution calendar.
+- **[GitLegacy Contribution Guide](/contribute)**: Learn how to participate in open-source developer tool initiatives.
+- **[Understanding GitHub Contribution Graphs](/blog/how-github-contribution-graph-works)**: Read our technical breakdown of the 53-week calendar matrix.
+
+---
+
+### Conclusion & Next Steps
+
+Upgrading your profile with **github readme badges** is one of the highest-impact enhancements you can make to your online developer presence.
+
+Start crafting your tech stack basket and custom status shields today with the free [GitLegacy GitHub Badge Generator](/tools/github-badges)!
+    `,
+  },
+  {
     slug: 'how-github-contribution-graph-works',
     title: 'How GitHub Contribution Graphs Work: The Math Behind the 53-Week Grid',
     excerpt:
@@ -28,7 +136,7 @@ export const BLOG_POSTS: BlogPost[] = [
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
     },
     tags: ['Git', 'GitHub', 'Algorithms', 'Calendar'],
-    featured: true,
+    featured: false,
     content: `
 ### Introduction
 

@@ -10,6 +10,66 @@ import { useTheme } from '../../../context/ThemeContext';
 import { ArrowLeft, Clock, Calendar, Share2, Check, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
+// Helper function to render inline formatting (links, bold, code tags)
+function renderFormattedText(text: string): React.ReactNode {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(parseInlineStyles(text.substring(lastIndex, match.index), `t-${match.index}`));
+    }
+    const linkText = match[1];
+    const linkUrl = match[2];
+
+    if (linkUrl.startsWith('/')) {
+      parts.push(
+        <Link
+          key={`link-${match.index}`}
+          href={linkUrl}
+          className="text-emerald-400 font-bold underline underline-offset-4 hover:text-emerald-300 transition-colors"
+        >
+          {parseInlineStyles(linkText, `lt-${match.index}`)}
+        </Link>
+      );
+    } else {
+      parts.push(
+        <a
+          key={`link-${match.index}`}
+          href={linkUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-emerald-400 font-bold underline underline-offset-4 hover:text-emerald-300 transition-colors"
+        >
+          {parseInlineStyles(linkText, `lt-${match.index}`)}
+        </a>
+      );
+    }
+    lastIndex = linkRegex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(parseInlineStyles(text.substring(lastIndex), `t-${lastIndex}`));
+  }
+
+  return parts.length > 0 ? parts : parseInlineStyles(text, 't-0');
+}
+
+function parseInlineStyles(text: string, keyPrefix: string): React.ReactNode {
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={`${keyPrefix}-b-${idx}`} className="font-extrabold text-white">{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith('`') && part.endsWith('`')) {
+      return <code key={`${keyPrefix}-c-${idx}`} className="px-1.5 py-0.5 rounded bg-slate-900 text-emerald-400 font-mono text-xs border border-slate-800">{part.slice(1, -1)}</code>;
+    }
+    return part;
+  });
+}
+
 export default function BlogPostPage() {
   const params = useParams();
   const slug = params?.slug as string;
@@ -109,33 +169,57 @@ export default function BlogPostPage() {
         <article className={`prose max-w-none space-y-6 text-base leading-relaxed ${
           isDarkMode ? 'prose-invert text-slate-200' : 'text-slate-800'
         }`}>
-          {post.content.split('\n\n').map((paragraph, index) => {
-            if (paragraph.startsWith('### ')) {
+          {post.content.trim().split('\n\n').map((paragraph, index) => {
+            const p = paragraph.trim();
+            if (p === '---') {
+              return <hr key={index} className="my-8 border-slate-800" />;
+            }
+            if (p.startsWith('## ')) {
               return (
-                <h3 key={index} className="text-xl font-bold text-emerald-500 mt-8 mb-3">
-                  {paragraph.replace('### ', '')}
+                <h2 key={index} className="text-2xl font-black tracking-tight text-white mt-10 mb-4 border-b border-slate-800/80 pb-2">
+                  {renderFormattedText(p.replace('## ', ''))}
+                </h2>
+              );
+            }
+            if (p.startsWith('### ')) {
+              return (
+                <h3 key={index} className="text-xl font-bold text-emerald-400 mt-8 mb-3">
+                  {renderFormattedText(p.replace('### ', ''))}
                 </h3>
               );
             }
-            if (paragraph.startsWith('- ')) {
-              const listItems = paragraph.split('\n- ');
+            if (p.startsWith('#### ')) {
               return (
-                <ul key={index} className="list-disc pl-6 space-y-1.5 my-3">
+                <h4 key={index} className="text-lg font-bold text-slate-200 mt-6 mb-2">
+                  {renderFormattedText(p.replace('#### ', ''))}
+                </h4>
+              );
+            }
+            if (p.startsWith('- ')) {
+              const listItems = p.split('\n- ');
+              return (
+                <ul key={index} className="list-disc pl-6 space-y-2 my-4">
                   {listItems.map((item, i) => (
-                    <li key={i}>{item.replace('- ', '')}</li>
+                    <li key={i} className="text-slate-300">
+                      {renderFormattedText(item.replace('- ', ''))}
+                    </li>
                   ))}
                 </ul>
               );
             }
-            if (paragraph.startsWith('```')) {
-              const codeText = paragraph.replace(/```[a-z]*/g, '').trim();
+            if (p.startsWith('```')) {
+              const codeText = p.replace(/```[a-z]*/g, '').trim();
               return (
-                <pre key={index} className="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs overflow-x-auto border border-slate-800 my-4">
+                <pre key={index} className="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs overflow-x-auto border border-slate-800 my-4 shadow-inner">
                   <code>{codeText}</code>
                 </pre>
               );
             }
-            return <p key={index}>{paragraph}</p>;
+            return (
+              <p key={index} className="text-slate-300 leading-relaxed text-sm sm:text-base">
+                {renderFormattedText(p)}
+              </p>
+            );
           })}
         </article>
 
