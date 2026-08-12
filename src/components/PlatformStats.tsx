@@ -28,8 +28,8 @@ const STATS = [
   },
   {
     id: 'badges',
-    label: 'Badges & Shields Available',
-    value: '40+',
+    label: 'Curated Badges & Shields',
+    value: '150+',
     icon: Code2,
     color: 'text-purple-400',
   },

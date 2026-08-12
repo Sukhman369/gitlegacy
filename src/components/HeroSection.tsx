@@ -38,7 +38,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <p className={`text-base sm:text-lg leading-relaxed ${
           isDarkMode ? 'text-slate-300' : 'text-slate-600'
         }`}>
-          Design custom 53-week pixel art, visualize real historical contribution graphs, generate dynamic live SVG profile badges, and export retina social media headers.
+          Build stunning GitHub profile READMEs with 150+ curated developer badges & shields, custom 53-week pixel art canvas generators, dynamic live SVG cards, and 4K Retina social headers.
         </p>
       </div>
     </section>
