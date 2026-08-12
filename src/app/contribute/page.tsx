@@ -105,7 +105,7 @@ export default function ContributePage() {
               <span>Fork Repository on GitHub</span>
             </a>
             <Link
-              href="/blog"
+              href="/blog/how-github-contribution-graph-works"
               className={`py-2.5 px-5 rounded-xl text-xs font-semibold border flex items-center gap-2 transition-all ${
                 isDarkMode
                   ? 'bg-slate-900 border-slate-800 hover:bg-slate-800 text-slate-200'
