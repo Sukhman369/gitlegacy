@@ -37,7 +37,7 @@ const BASE_TOOLS: ToolItem[] = [
     id: 'badge-studio',
     title: 'Developer Badge & Shield Studio',
     badge: '150+ Curated Shields',
-    description: 'Custom status shield generator and curated tech stack badges (React, Next.js, Docker, Python) for your profile.',
+    description: 'Build high-impact GitHub README profiles with 1-click tech stack baskets, verified status shields, and zero-clutter HTML output across 16+ developer categories.',
     icon: ShieldCheck,
     darkColor: 'text-cyan-400',
     lightColor: 'text-cyan-600',
@@ -46,7 +46,7 @@ const BASE_TOOLS: ToolItem[] = [
     darkBorder: 'border-cyan-500/30 hover:border-cyan-400',
     lightBorder: 'border-cyan-200 hover:border-cyan-400',
     href: '/tools/github-badges',
-    ctaText: 'Open Badge Studio',
+    ctaText: 'Explore Badge Studio',
   },
   {
     id: 'planner',
