@@ -28,7 +28,7 @@ const STATS = [
   },
   {
     id: 'badges',
-    label: 'Curated Badges & Shields',
+    label: 'Github Badges & Shields',
     value: '150+',
     icon: Code2,
     color: 'text-purple-400',
