@@ -95,9 +95,6 @@ export const Header: React.FC = () => {
               >
                 Git<span className="text-emerald-500">Legacy</span>
               </span>
-              <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                v1.0
-              </span>
             </div>
           </div>
         </Link>
