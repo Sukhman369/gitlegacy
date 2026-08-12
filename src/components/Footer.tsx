@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/tools/badges" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                <Link href="/tools/github-badges" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
                   <Shield className="w-3.5 h-3.5 text-slate-500" />
                   <span>Badge & Shield Studio</span>
                 </Link>

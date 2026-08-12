@@ -75,7 +75,7 @@ const BASE_TOOLS: ToolItem[] = [
     lightBgGradient: 'from-cyan-50/60 via-blue-50/20 to-transparent',
     darkBorder: 'border-cyan-500/30 hover:border-cyan-400',
     lightBorder: 'border-cyan-200 hover:border-cyan-400',
-    href: '/tools/badges',
+    href: '/tools/github-badges',
     ctaText: 'Open Badge Studio',
   },
   {

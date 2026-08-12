@@ -63,7 +63,7 @@ export const Header: React.FC = () => {
 
   const navItems = [
     { label: 'Tools Hub', href: '/tools', icon: Wrench },
-    { label: 'Badge Studio', href: '/tools/badges', icon: Shield },
+    { label: 'Badge Studio', href: '/tools/github-badges', icon: Shield },
     { label: 'Contributions Guide', href: '/contribute', icon: HeartHandshake },
     { label: 'Blog', href: '/blog', icon: BookOpen },
   ];

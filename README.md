@@ -20,7 +20,7 @@
   <p align="center">
     <a href="https://gitlegacy.co"><strong>🌐 Visit GitLegacy.co</strong></a> •
     <a href="https://gitlegacy.co/tools/art-studio"><strong>🎨 Art Studio</strong></a> •
-    <a href="https://gitlegacy.co/tools/badges"><strong>🛡️ Badge Studio</strong></a> •
+    <a href="https://gitlegacy.co/tools/github-badges"><strong>🛡️ Badge Studio</strong></a> •
     <a href="https://gitlegacy.co/tools/history-visualizer"><strong>📊 History Visualizer</strong></a>
   </p>
 
@@ -39,7 +39,7 @@ Turn your 53-week $\times$ 7-day contribution graph into pixel-perfect artwork, 
 
 ---
 
-### 🛡️ 2. Developer Badge Studio (`/tools/badges`)
+### 🛡️ 2. Developer Badge Studio (`/tools/github-badges`)
 Design, aggregate, and export high-performance Shields.io developer badges for your GitHub Profile `README.md`:
 - 🛒 **1-Click Stack Basket**: Pick badges across **Frontend**, **Backend**, **Databases**, **DevOps & Cloud**, and **Digital Marketing & SEO** (featuring *WordPress*, *SEO*, *Google Ads*, *Meta Ads*, *Analytics*, *CodeIgniter 3/4*, *Laravel*, *Next.js*, etc.).
 - 📦 **Clean Profile HTML Output**: Export 1-click badge baskets as neatly formatted `<p align="center">` HTML grids that eliminate source code clutter on your GitHub profile.

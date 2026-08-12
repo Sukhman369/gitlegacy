@@ -58,7 +58,7 @@ export function getSiteNavigationSchema() {
         position: 1,
         name: 'Badge Studio & Shields',
         description: 'Create SEO-optimized, custom branded GitHub profile badges & shields',
-        url: `${BASE_URL}/tools/badges`,
+        url: `${BASE_URL}/tools/github-badges`,
       },
       {
         '@type': 'SiteNavigationElement',

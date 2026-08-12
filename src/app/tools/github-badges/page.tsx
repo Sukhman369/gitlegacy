@@ -139,7 +139,7 @@ export default function BadgesStudioPage() {
   // Copy state
   const [copiedType, setCopiedType] = useState<string | null>(null);
 
-  const GITLEGACY_TOOL_URL = 'https://gitlegacy.co/tools/badges';
+  const GITLEGACY_TOOL_URL = 'https://gitlegacy.co/tools/github-badges';
   const GITLEGACY_API_BASE = 'https://gitlegacy.co/api/badge/shield';
 
   const logoQuery = shieldLogo && shieldLogo !== 'none' ? `&logo=${shieldLogo}&logoColor=${encodeURIComponent(shieldLogoColor)}` : '';
@@ -210,7 +210,7 @@ export default function BadgesStudioPage() {
   const badgeSchema = getSoftwareApplicationSchema(
     'GitLegacy Badge Studio',
     'Curated developer badges & shields generator for GitHub profile READMEs.',
-    '/tools/badges'
+    '/tools/github-badges'
   );
 
   return (
