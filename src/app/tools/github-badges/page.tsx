@@ -168,7 +168,7 @@ export default function BadgesStudioPage() {
       const imgTags = selectedObjects
         .map(
           (b) =>
-            `  <a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer">\n    <img src="${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white" alt="${b.name}" />\n  </a>`
+            `  <a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer"><img src="${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white" alt="${b.name}" /></a>`
         )
         .join('\n');
       outputText = `<p align="center">\n${imgTags}\n</p>`;
@@ -416,7 +416,7 @@ export default function BadgesStudioPage() {
                 {displayedTechBadges.map((badge) => {
                   const localProxyUrl = `/api/badge/shield?name=${encodeURIComponent(badge.name)}&color=${badge.color}&style=${techBadgeStyle}&logo=${badge.logo}&logoColor=white`;
                   const prodProxyUrl = `${GITLEGACY_API_BASE}?name=${encodeURIComponent(badge.name)}&color=${badge.color}&style=${techBadgeStyle}&logo=${badge.logo}&logoColor=white`;
-                  const htmlTag = `<a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer">\n  <img src="${prodProxyUrl}" alt="${badge.name}" />\n</a>`;
+                  const htmlTag = `<a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer"><img src="${prodProxyUrl}" alt="${badge.name}" /></a>`;
                   const mdTag = `[![${badge.name}](${prodProxyUrl})](${GITLEGACY_TOOL_URL})`;
                   const defaultCopyText = basketFormat === 'centered-html' ? htmlTag : mdTag;
                   const isCopied = copiedType === badge.name;
