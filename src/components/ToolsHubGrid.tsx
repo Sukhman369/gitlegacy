@@ -36,7 +36,7 @@ const BASE_TOOLS: ToolItem[] = [
   {
     id: 'badge-studio',
     title: 'Developer Badge & Shield Studio',
-    badge: '40+ Shields',
+    badge: '150+ Curated Shields',
     description: 'Custom status shield generator and curated tech stack badges (React, Next.js, Docker, Python) for your profile.',
     icon: ShieldCheck,
     darkColor: 'text-cyan-400',
