@@ -105,7 +105,17 @@ export const Header: React.FC = () => {
         {/* Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map(({ label, href, icon: Icon }) => {
-            const isActive = pathname === href || (href !== '/' && pathname?.startsWith(href));
+            const isActive =
+              pathname === href ||
+              (href !== '/' &&
+                pathname?.startsWith(href) &&
+                !navItems.some(
+                  (other) =>
+                    other.href !== href &&
+                    other.href !== '/' &&
+                    other.href.length > href.length &&
+                    pathname?.startsWith(other.href)
+                ));
             return (
               <Link
                 key={href}
@@ -208,7 +218,17 @@ export const Header: React.FC = () => {
         }`}
       >
         {navItems.map(({ label, href, icon: Icon }) => {
-          const isActive = pathname === href || (href !== '/' && pathname?.startsWith(href));
+          const isActive =
+            pathname === href ||
+            (href !== '/' &&
+              pathname?.startsWith(href) &&
+              !navItems.some(
+                (other) =>
+                  other.href !== href &&
+                  other.href !== '/' &&
+                  other.href.length > href.length &&
+                  pathname?.startsWith(other.href)
+              ));
           return (
             <Link
               key={href}
