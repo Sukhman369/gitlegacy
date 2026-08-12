@@ -34,6 +34,21 @@ interface ToolItem {
 
 const BASE_TOOLS: ToolItem[] = [
   {
+    id: 'badge-studio',
+    title: 'Developer Badge & Shield Studio',
+    badge: '40+ Shields',
+    description: 'Custom status shield generator and curated tech stack badges (React, Next.js, Docker, Python) for your profile.',
+    icon: ShieldCheck,
+    darkColor: 'text-cyan-400',
+    lightColor: 'text-cyan-600',
+    darkBgGradient: 'from-cyan-500/10 via-blue-500/5 to-transparent',
+    lightBgGradient: 'from-cyan-50/60 via-blue-50/20 to-transparent',
+    darkBorder: 'border-cyan-500/30 hover:border-cyan-400',
+    lightBorder: 'border-cyan-200 hover:border-cyan-400',
+    href: '/tools/github-badges',
+    ctaText: 'Open Badge Studio',
+  },
+  {
     id: 'planner',
     title: 'Contribution Art Planner',
     badge: 'Core Studio',
@@ -62,21 +77,6 @@ const BASE_TOOLS: ToolItem[] = [
     lightBorder: 'border-teal-200 hover:border-teal-400',
     href: '/tools/history-visualizer',
     ctaText: 'View GitHub History',
-  },
-  {
-    id: 'badge-studio',
-    title: 'Developer Badge & Shield Studio',
-    badge: '40+ Shields',
-    description: 'Custom status shield generator and curated tech stack badges (React, Next.js, Docker, Python) for your profile.',
-    icon: ShieldCheck,
-    darkColor: 'text-cyan-400',
-    lightColor: 'text-cyan-600',
-    darkBgGradient: 'from-cyan-500/10 via-blue-500/5 to-transparent',
-    lightBgGradient: 'from-cyan-50/60 via-blue-50/20 to-transparent',
-    darkBorder: 'border-cyan-500/30 hover:border-cyan-400',
-    lightBorder: 'border-cyan-200 hover:border-cyan-400',
-    href: '/tools/github-badges',
-    ctaText: 'Open Badge Studio',
   },
   {
     id: 'social-exporter',
