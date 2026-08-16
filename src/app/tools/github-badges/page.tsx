@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
+import { LiveReadmePreview } from '../../../components/LiveReadmePreview';
 import { useTheme } from '../../../context/ThemeContext';
 import { getSoftwareApplicationSchema } from '../../../lib/schema-org';
 import { Shield, Sparkles, Copy, Check, Code, ExternalLink, Image as ImageIcon, Search, ShoppingBag, Plus, Trash2, CheckCircle2, Moon, Sun } from 'lucide-react';
@@ -510,6 +511,25 @@ export default function BadgesStudioPage() {
             </div>
           )}
         </section>
+
+        {/* Live GitHub Profile README Container Preview */}
+        <LiveReadmePreview
+          selectedBadges={selectedBadges}
+          allBadges={TECH_BADGES}
+          badgeStyle={techBadgeStyle}
+          customShield={{
+            label: shieldLabel,
+            message: shieldMessage,
+            color: shieldColor,
+            style: shieldStyle,
+            logo: shieldLogo,
+            logoColor: shieldLogoColor,
+          }}
+          basketFormat={basketFormat}
+          onFormatChange={setBasketFormat}
+          onCopyCode={handleCopy}
+          copiedId={copiedType}
+        />
 
         {/* Studio Section 2: Essential Profile Status Presets */}
         <section className={`p-6 sm:p-8 rounded-2xl border shadow-2xl space-y-6 ${
