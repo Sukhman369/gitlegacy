@@ -177,41 +177,65 @@ export default function BadgesStudioPage() {
 
   const handleCopyAllBasketMarkdown = () => {
     const selectedObjects = TECH_BADGES.filter((b) => selectedBadges.includes(b.name));
-    let outputText = '';
+    const categoryMap: Record<string, { label: string; icon: string }> = {
+      frontend: { label: 'Frontend', icon: '🎨' },
+      backend: { label: 'Backend / Framework', icon: '⚙️' },
+      languages: { label: 'Languages', icon: '🌐' },
+      mobile: { label: 'Mobile Application Development', icon: '📱' },
+      databases: { label: 'Databases', icon: '🗄️' },
+      devops: { label: 'CI/CD & DevOps', icon: '🚀' },
+      marketing: { label: 'Digital Marketing & SEO', icon: '📈' },
+    };
+    const categoryOrder = ['frontend', 'backend', 'languages', 'mobile', 'databases', 'devops', 'marketing'];
 
-    if (basketFormat === 'left-html') {
-      const imgTags = selectedObjects
-        .map(
-          (b) =>
-            `  <a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer"><img src="${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white" alt="${b.name}" /></a>`
-        )
-        .join('\n');
-      outputText = `<p align="left">\n${imgTags}\n</p>`;
-    } else if (basketFormat === 'centered-html') {
-      const imgTags = selectedObjects
-        .map(
-          (b) =>
-            `  <a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer"><img src="${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white" alt="${b.name}" /></a>`
-        )
-        .join('\n');
-      outputText = `<p align="center">\n${imgTags}\n</p>`;
-    } else if (basketFormat === 'multiline-md') {
-      outputText = selectedObjects
-        .map(
-          (b) =>
-            `[![${b.name}](${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white)](${GITLEGACY_TOOL_URL})`
-        )
-        .join('\n');
-    } else {
-      outputText = selectedObjects
-        .map(
-          (b) =>
-            `[![${b.name}](${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white)](${GITLEGACY_TOOL_URL})`
-        )
-        .join(' ');
-    }
+    const categorizedGroups = categoryOrder.map((catKey) => {
+      const badges = selectedObjects.filter((b) => b.category === catKey);
+      return {
+        key: catKey,
+        meta: categoryMap[catKey] || { label: catKey, icon: '⚡' },
+        badges,
+      };
+    }).filter((group) => group.badges.length > 0);
 
-    handleCopy(outputText, 'basket-all');
+    const sections = categorizedGroups.map((group) => {
+      const header = `### ${group.meta.icon} ${group.meta.label}`;
+
+      if (basketFormat === 'left-html') {
+        const imgTags = group.badges
+          .map(
+            (b) =>
+              `  <a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer"><img src="${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white" alt="${b.name}" /></a>`
+          )
+          .join('\n');
+        return `${header}\n<p align="left">\n${imgTags}\n</p>`;
+      } else if (basketFormat === 'centered-html') {
+        const imgTags = group.badges
+          .map(
+            (b) =>
+              `  <a href="${GITLEGACY_TOOL_URL}" target="_blank" rel="noopener noreferrer"><img src="${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white" alt="${b.name}" /></a>`
+          )
+          .join('\n');
+        return `${header}\n<p align="center">\n${imgTags}\n</p>`;
+      } else if (basketFormat === 'multiline-md') {
+        const mdTags = group.badges
+          .map(
+            (b) =>
+              `[![${b.name}](${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white)](${GITLEGACY_TOOL_URL})`
+          )
+          .join('\n');
+        return `${header}\n${mdTags}`;
+      } else {
+        const mdTags = group.badges
+          .map(
+            (b) =>
+              `[![${b.name}](${GITLEGACY_API_BASE}?name=${encodeURIComponent(b.name)}&color=${b.color}&style=${techBadgeStyle}&logo=${b.logo}&logoColor=white)](${GITLEGACY_TOOL_URL})`
+          )
+          .join(' ');
+        return `${header}\n${mdTags}`;
+      }
+    });
+
+    handleCopy(sections.join('\n\n'), 'basket-all');
   };
 
   const handleScrollToCustomShield = () => {
