@@ -8,11 +8,9 @@ export const metadata: Metadata = {
   keywords: [
     'GitHub tutorial',
     'git contribution graph',
-    'github badge tutorial',
+    'github readme badge generator',
     'backdated git commits',
     'developer profile guide',
-    'github profile README',
-    'git insights',
   ],
   openGraph: {
     title: 'GitLegacy Blog – Developer Guides & GitHub Insights',
