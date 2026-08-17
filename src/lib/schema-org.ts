@@ -1,12 +1,16 @@
 /**
  * GitLegacy JSON-LD Structured Data Schema Generator for Google Search
- * Provides WebSite, Organization, SiteNavigationElement, and SoftwareApplication schemas.
+ * Provides WebSite, Organization, SiteNavigationElement, SoftwareApplication,
+ * FAQPage, and Article schemas.
  */
+
+import type { BlogPost } from './blog-data';
 
 export const BASE_URL = 'https://gitlegacy.co';
 
 /**
  * 1. WebSite Schema - Enables Google to show "GitLegacy" as official site name
+ * Includes potentialAction for Sitelinks Searchbox
  */
 export function getWebSiteSchema() {
   return {
@@ -24,6 +28,14 @@ export function getWebSiteSchema() {
       url: BASE_URL,
       logo: `${BASE_URL}/icon.svg`,
     },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${BASE_URL}/tools/github-badges?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 
@@ -36,9 +48,12 @@ export function getOrganizationSchema() {
     '@type': 'Organization',
     '@id': `${BASE_URL}/#organization`,
     name: 'GitLegacy',
-    alternateName: ['Git Legacy'],
+    alternateName: ['Git Legacy', 'GitLegacy Studio'],
     url: BASE_URL,
     logo: `${BASE_URL}/icon.svg`,
+    description:
+      'GitLegacy is a free developer tool platform for designing GitHub profile and generating custom badges, and automating backdated commit strategies.',
+    foundingDate: '2026',
     sameAs: ['https://github.com/Sukhman369/gitlegacy'],
   };
 }
@@ -111,5 +126,62 @@ export function getSoftwareApplicationSchema(
       name: 'GitLegacy',
       url: BASE_URL,
     },
+  };
+}
+
+/**
+ * 5. FAQPage Schema - Unlocks FAQ rich results in Google Search
+ */
+export function getFAQSchema(faqs: { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: a,
+      },
+    })),
+  };
+}
+
+/**
+ * 6. Article Schema for blog posts - Enables Article rich results and byline in SERPs
+ */
+export function getArticleSchema(post: BlogPost) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    url: `${BASE_URL}/blog/${post.slug}`,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: post.author.name,
+      jobTitle: post.author.role,
+      worksFor: {
+        '@type': 'Organization',
+        name: 'GitLegacy',
+        url: BASE_URL,
+      },
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'GitLegacy',
+      url: BASE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${BASE_URL}/icon.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${BASE_URL}/blog/${post.slug}`,
+    },
+    keywords: post.tags.join(', '),
   };
 }

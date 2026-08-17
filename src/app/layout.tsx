@@ -39,14 +39,15 @@ export const metadata: Metadata = {
     'Git Legacy',
     'gitlegacy.co',
     'Git Legacy Studio',
-    'GitHub Contribution Graph',
-    'Git Commit Art',
-    'GitHub Contribution Generator',
+    'GitHub Readme badge Generator',
     'GitHub Badge Generator',
     'Developer Badges',
     'Commit Strategy Planner',
   ],
   authors: [{ name: 'Sukhman' }],
+  alternates: {
+    canonical: 'https://gitlegacy.co',
+  },
   icons: {
     icon: '/icon.svg',
     shortcut: '/icon.svg',
@@ -80,6 +81,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased dark`}
+      suppressHydrationWarning
     >
       <head>
         <script
