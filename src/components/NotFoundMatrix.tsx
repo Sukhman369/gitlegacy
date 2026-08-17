@@ -128,7 +128,7 @@ export function NotFoundMatrix() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-8 space-y-10 animate-in fade-in duration-300">
+    <div className="w-full max-w-6xl mx-auto px-4 py-8 space-y-10 animate-in fade-in duration-300">
       {/* Top Banner Tag */}
       <div className="text-center space-y-3">
         <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase border transition-all ${
@@ -194,17 +194,17 @@ export function NotFoundMatrix() {
         </div>
 
         {/* Grid Scrollable Wrapper */}
-        <div className="overflow-x-auto py-2 scrollbar-thin scrollbar-thumb-slate-700">
-          <div className="inline-flex flex-col gap-1 sm:gap-1.5 p-3 rounded-2xl bg-slate-950/80 border border-slate-800/80 min-w-max mx-auto">
+        <div className="w-full overflow-x-auto lg:overflow-x-visible py-2 scrollbar-thin scrollbar-thumb-slate-700">
+          <div className="flex flex-col gap-1 sm:gap-1.5 p-3 sm:p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 w-full min-w-[780px] lg:min-w-0">
             {grid.map((row, rIdx) => (
-              <div key={rIdx} className="flex gap-1 sm:gap-1.5">
+              <div key={rIdx} className="flex justify-between items-center gap-[2px] sm:gap-1 lg:gap-1.5 w-full">
                 {row.map((level, cIdx) => (
                   <button
                     key={`${rIdx}-${cIdx}`}
                     onClick={() => handleCellClick(rIdx, cIdx)}
                     onMouseEnter={() => setActiveCell({ row: rIdx, col: cIdx })}
                     onMouseLeave={() => setActiveCell(null)}
-                    className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-[2px] border transition-all cursor-pointer hover:scale-125 ${getCellColor(
+                    className={`flex-1 aspect-square min-w-[8px] max-w-[17px] rounded-[2px] border transition-all cursor-pointer hover:scale-125 ${getCellColor(
                       level
                     )}`}
                     title={`Row ${rIdx + 1}, Week ${cIdx + 1}: Intensity ${level}`}
