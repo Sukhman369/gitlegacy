@@ -19,21 +19,21 @@ import confetti from 'canvas-confetti';
 
 // 5x7 matrix representations for digits 4 and 0
 const CHAR_4 = [
-  [1, 0, 0, 1, 0],
-  [1, 0, 0, 1, 0],
-  [1, 0, 0, 1, 0],
+  [1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 1],
   [1, 1, 1, 1, 1],
-  [0, 0, 0, 1, 0],
-  [0, 0, 0, 1, 0],
-  [0, 0, 0, 1, 0],
+  [0, 0, 0, 0, 1],
+  [0, 0, 0, 0, 1],
+  [0, 0, 0, 0, 1],
 ];
 
 const CHAR_0 = [
   [0, 1, 1, 1, 0],
   [1, 0, 0, 0, 1],
-  [1, 0, 0, 1, 1],
-  [1, 0, 1, 0, 1],
-  [1, 1, 0, 0, 1],
+  [1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 1],
   [1, 0, 0, 0, 1],
   [0, 1, 1, 1, 0],
 ];
@@ -62,7 +62,7 @@ export function NotFoundMatrix() {
     const cols = 53;
     const newGrid: number[][] = Array.from({ length: rows }, () => Array(cols).fill(0));
 
-    // Place 4 0 4 in the center (start at col 18)
+    // Place characters with exact column offset and intensity
     const placeChar = (charMatrix: number[][], startCol: number, intensity: number) => {
       for (let r = 0; r < 7; r++) {
         for (let c = 0; c < charMatrix[r].length; c++) {
@@ -74,29 +74,15 @@ export function NotFoundMatrix() {
     };
 
     if (!isFoundState) {
-      // 4 0 4 (glitched commit matrix)
-      placeChar(CHAR_4, 18, 4);
-      placeChar(CHAR_0, 25, 3);
-      placeChar(CHAR_4, 32, 4);
-
-      // Add a few ambient "commit noise" squares on random outer columns
-      const noisePositions = [
-        [1, 5, 1], [3, 8, 2], [5, 12, 1], [2, 40, 2], [4, 45, 1], [6, 49, 2],
-        [0, 2, 1], [6, 7, 1], [1, 48, 2], [5, 51, 1]
-      ];
-      noisePositions.forEach(([r, c, val]) => {
-        newGrid[r][c] = val;
-      });
+      // Perfectly centered 4 0 4 (Total width: 5 + 2 + 5 + 2 + 5 = 19 cols, starting at col 17)
+      placeChar(CHAR_4, 17, 4);
+      placeChar(CHAR_0, 24, 4);
+      placeChar(CHAR_4, 31, 4);
     } else {
-      // Happy resolved matrix: 2 0 0 (HTTP 200 OK) or smiley
-      placeChar(CHAR_0, 18, 4);
-      placeChar(CHAR_O_SMILE, 25, 4);
-      placeChar(CHAR_0, 32, 4);
-
-      // Celebration aura
-      for (let c = 0; c < cols; c += 4) {
-        newGrid[c % 7][c] = (c % 3) + 1;
-      }
+      // Resolved celebration state: smiley face & OK pattern
+      placeChar(CHAR_0, 17, 4);
+      placeChar(CHAR_O_SMILE, 24, 4);
+      placeChar(CHAR_0, 31, 4);
     }
 
     return newGrid;
