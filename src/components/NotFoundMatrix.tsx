@@ -19,13 +19,13 @@ import confetti from 'canvas-confetti';
 
 // 5x7 matrix representations for digits 4 and 0
 const CHAR_4 = [
-  [1, 0, 0, 0, 1],
-  [1, 0, 0, 0, 1],
-  [1, 0, 0, 0, 1],
+  [1, 0, 0, 1, 0],
+  [1, 0, 0, 1, 0],
+  [1, 0, 0, 1, 0],
   [1, 1, 1, 1, 1],
-  [0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 1],
+  [0, 0, 0, 1, 0],
+  [0, 0, 0, 1, 0],
+  [0, 0, 0, 1, 0],
 ];
 
 const CHAR_0 = [
@@ -119,12 +119,12 @@ export function NotFoundMatrix() {
   // Color mapper matching GitHub contribution shades
   const getCellColor = (level: number) => {
     if (level === 0) {
-      return isDarkMode ? 'bg-slate-900 border-slate-800/80 hover:bg-slate-800' : 'bg-slate-200/80 border-slate-300 hover:bg-slate-300';
+      return isDarkMode ? 'bg-slate-900/80 border-slate-800 hover:bg-slate-800' : 'bg-slate-200/80 border-slate-300 hover:bg-slate-300';
     }
-    if (level === 1) return 'bg-emerald-950/90 border-emerald-900 text-emerald-300';
+    if (level === 1) return 'bg-emerald-950 border-emerald-900 text-emerald-300';
     if (level === 2) return 'bg-emerald-700 border-emerald-600 shadow-sm text-white';
     if (level === 3) return 'bg-emerald-500 border-emerald-400 shadow-sm text-slate-950 font-bold';
-    return 'bg-emerald-400 border-emerald-300 shadow-[0_0_8px_rgba(52,211,153,0.7)] text-slate-950 font-black';
+    return 'bg-emerald-400 border-emerald-300 shadow-[0_0_10px_rgba(52,211,153,0.8)] text-slate-950 font-black';
   };
 
   return (
@@ -172,10 +172,10 @@ export function NotFoundMatrix() {
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono border-b pb-3 border-slate-800/80">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-bold text-slate-300">53-Week Matrix MatrixCanvas</span>
+            <span className="font-bold text-slate-300">53-Week Matrix Canvas</span>
             <span className="text-slate-500">•</span>
             <span className="text-slate-400">
-              {fixed ? '371 commits resolved' : '371 slots inspected (404 pattern detected)'}
+              {fixed ? '371 commits resolved' : '371 slots (404 pattern active)'}
             </span>
           </div>
 
@@ -194,22 +194,24 @@ export function NotFoundMatrix() {
         </div>
 
         {/* Grid Scrollable Wrapper */}
-        <div className="overflow-x-auto py-2 no-scrollbar">
-          <div className="inline-grid grid-rows-7 grid-flow-col gap-1 sm:gap-1.5 p-2 rounded-2xl bg-slate-950/60 border border-slate-800/60">
-            {grid.map((row, rIdx) =>
-              row.map((level, cIdx) => (
-                <button
-                  key={`${rIdx}-${cIdx}`}
-                  onClick={() => handleCellClick(rIdx, cIdx)}
-                  onMouseEnter={() => setActiveCell({ row: rIdx, col: cIdx })}
-                  onMouseLeave={() => setActiveCell(null)}
-                  className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-[2px] border transition-all cursor-pointer hover:scale-125 ${getCellColor(
-                    level
-                  )}`}
-                  title={`Row ${rIdx + 1}, Week ${cIdx + 1}: Intensity ${level}`}
-                />
-              ))
-            )}
+        <div className="overflow-x-auto py-2 scrollbar-thin scrollbar-thumb-slate-700">
+          <div className="inline-flex flex-col gap-1 sm:gap-1.5 p-3 rounded-2xl bg-slate-950/80 border border-slate-800/80 min-w-max mx-auto">
+            {grid.map((row, rIdx) => (
+              <div key={rIdx} className="flex gap-1 sm:gap-1.5">
+                {row.map((level, cIdx) => (
+                  <button
+                    key={`${rIdx}-${cIdx}`}
+                    onClick={() => handleCellClick(rIdx, cIdx)}
+                    onMouseEnter={() => setActiveCell({ row: rIdx, col: cIdx })}
+                    onMouseLeave={() => setActiveCell(null)}
+                    className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-[2px] border transition-all cursor-pointer hover:scale-125 ${getCellColor(
+                      level
+                    )}`}
+                    title={`Row ${rIdx + 1}, Week ${cIdx + 1}: Intensity ${level}`}
+                  />
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
