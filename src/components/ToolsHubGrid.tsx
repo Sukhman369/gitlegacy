@@ -12,29 +12,17 @@ import {
   Terminal,
   ArrowRight,
   Sparkles,
-  Wrench,
-  Code2,
   Copy,
   Check,
-  Play,
-  Monitor,
-  FolderGit2,
-  FileCode2,
-  Cpu,
-  Layers,
 } from 'lucide-react';
 
 export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
   const { isDarkMode } = useTheme();
-  const [activeDirection, setActiveDirection] = useState<'bento' | 'blueprint' | 'terminal'>('bento');
   
   // Interactive Bento State
   const [bentoWord, setBentoWord] = useState('OCTO');
   const [copiedShield, setCopiedShield] = useState<string | null>(null);
   const [scriptLang, setScriptLang] = useState<'bash' | 'py' | 'ps1'>('bash');
-
-  // Terminal IDE State
-  const [activeTab, setActiveTab] = useState<'planner' | 'badges' | 'history' | 'scripts' | 'banner'>('planner');
 
   const handleCopyShield = (shieldName: string) => {
     setCopiedShield(shieldName);
@@ -42,13 +30,35 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
     setTimeout(() => setCopiedShield(null), 1500);
   };
 
-  /* -------------------------------------------------------------------------- */
-  /* DIRECTION 1: INTERACTIVE BENTO MATRIX WITH LIVE MICRO-DEMOS                */
-  /* -------------------------------------------------------------------------- */
-  const renderBentoDirection = () => {
-    return (
+  return (
+    <section className="w-full space-y-6">
+      {showTitle && (
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
+          <div>
+            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-2 ${
+              isDarkMode
+                ? 'bg-slate-900 border border-slate-800 text-emerald-400'
+                : 'bg-slate-100 border border-slate-200 text-emerald-700'
+            }`}>
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Crafted for GitHub Developers</span>
+            </div>
+            <h2 className={`text-2xl sm:text-3xl font-extrabold tracking-tight ${
+              isDarkMode ? 'text-white' : 'text-slate-900'
+            }`}>
+              Developer Tools <span className="text-emerald-500">Suite</span>
+            </h2>
+          </div>
+
+          <p className={`text-xs max-w-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+            Interactive studios for contribution art, badges, history telemetry, and automation scripts.
+          </p>
+        </div>
+      )}
+
+      {/* Bento Matrix Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {/* Bento Item 1: Contribution Art Planner (Spans 2 cols, 2 rows) */}
+        {/* Bento Item 1: Contribution Art Planner (Spans 2 cols) */}
         <div className={`md:col-span-2 lg:col-span-2 p-6 rounded-2xl border flex flex-col justify-between transition-all duration-200 ${
           isDarkMode
             ? 'bg-slate-900/80 border-slate-800 hover:border-emerald-500/40'
@@ -130,7 +140,7 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
           </div>
         </div>
 
-        {/* Bento Item 2: Badge & Shield Studio (2 cols) */}
+        {/* Bento Item 2: Badge & Shield Studio (Spans 2 cols) */}
         <div className={`md:col-span-1 lg:col-span-2 p-6 rounded-2xl border flex flex-col justify-between transition-all duration-200 ${
           isDarkMode
             ? 'bg-slate-900/80 border-slate-800 hover:border-cyan-500/40'
@@ -292,293 +302,6 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
           </Link>
         </div>
       </div>
-    );
-  };
-
-  /* -------------------------------------------------------------------------- */
-  /* DIRECTION 2: MONOLITHIC MONOSPACE BLUEPRINT GRID (LINEAR / VERCEL DOCS)    */
-  /* -------------------------------------------------------------------------- */
-  const renderBlueprintDirection = () => {
-    const blueprintItems = [
-      {
-        idx: '01',
-        name: 'CONTRIBUTION_ART_PLANNER',
-        badge: 'ENGINE_53W',
-        desc: '53-week alphanumeric matrix mapping with custom intensity distribution and column offsets.',
-        tag: 'ART_STUDIO',
-        href: '/tools/art-studio',
-        icon: Palette,
-      },
-      {
-        idx: '02',
-        name: 'BADGE_AND_SHIELD_STUDIO',
-        badge: '150_SHIELDS',
-        desc: 'Curated developer shields with 1-click stack basket and multi-format HTML/Markdown exports.',
-        tag: 'SHIELDS_IO',
-        href: '/tools/github-badges',
-        icon: ShieldCheck,
-      },
-      {
-        idx: '03',
-        name: 'REAL_HISTORY_VISUALIZER',
-        badge: 'LIVE_SVG',
-        desc: 'Extract 365-day commit telemetry for any public GitHub handle with real-time SVG card generation.',
-        tag: 'TELEMETRY',
-        href: '/tools/history-visualizer',
-        icon: BarChart3,
-      },
-      {
-        idx: '04',
-        name: 'AUTOMATION_SCRIPT_CLI',
-        badge: 'ZERO_DEP',
-        desc: 'Standalone Bash, Python, and PowerShell execution scripts to automatically commit matrices.',
-        tag: 'CLI_EXPORT',
-        href: '/tools/script-generator',
-        icon: Terminal,
-      },
-      {
-        idx: '05',
-        name: 'SOCIAL_BANNER_4K_EXPORTER',
-        badge: 'RETINA_DPI',
-        desc: 'High-res header exports formatted for Twitter/X (1500x500) and LinkedIn (1584x396) cover specs.',
-        tag: 'MEDIA_EXPORT',
-        href: '/tools/art-studio#export-studio',
-        icon: Share2,
-      },
-      {
-        idx: '06',
-        name: 'PRESET_PATTERN_GALLERY',
-        badge: 'TEMPLATES',
-        desc: 'Categorized pre-drawn arcade art, career banners, and ecosystem matrices ready to load.',
-        tag: 'CATALOG',
-        href: '/tools/presets',
-        icon: LayoutTemplate,
-      },
-    ];
-
-    return (
-      <div className={`rounded-2xl border overflow-hidden transition-all ${
-        isDarkMode ? 'bg-slate-950 border-slate-800' : 'bg-white border-slate-200 shadow-sm'
-      }`}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-800/80">
-          {blueprintItems.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.idx}
-                href={item.href}
-                className={`p-6 flex flex-col justify-between group transition-colors relative ${
-                  index >= 3 ? 'border-t border-slate-800/80' : ''
-                } ${
-                  isDarkMode
-                    ? 'hover:bg-slate-900/60'
-                    : 'hover:bg-slate-50'
-                }`}
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-slate-500 font-bold tracking-widest">[{item.idx}]</span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold border border-slate-800 text-emerald-400 bg-slate-900">
-                      {item.badge}
-                    </span>
-                  </div>
-
-                  <div className="space-y-1.5 pt-1">
-                    <div className="flex items-center gap-2">
-                      <Icon className="w-4 h-4 text-emerald-500" />
-                      <h4 className="text-sm font-bold font-mono tracking-tight group-hover:text-emerald-400 transition-colors">
-                        {item.name}
-                      </h4>
-                    </div>
-                    <p className="text-xs text-slate-400 leading-relaxed font-sans">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pt-6 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                  <span>TAG: {item.tag}</span>
-                  <span className="text-emerald-400 font-bold group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                    <span>EXECUTE</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-    );
-  };
-
-  /* -------------------------------------------------------------------------- */
-  /* DIRECTION 3: TERMINAL / IDE WORKSPACE WITH FILE TABS                       */
-  /* -------------------------------------------------------------------------- */
-  const renderTerminalDirection = () => {
-    const tabs = [
-      { id: 'planner', name: 'contribution-studio.tsx', icon: Palette, title: 'Contribution Art Planner' },
-      { id: 'badges', name: 'badges-studio.sh', icon: ShieldCheck, title: 'Developer Badge Studio' },
-      { id: 'history', name: 'history-analyzer.svg', icon: BarChart3, title: 'Real History Visualizer' },
-      { id: 'scripts', name: 'script-exporter.py', icon: Terminal, title: 'Automation Script Exporter' },
-      { id: 'banner', name: 'retina-banner.canvas', icon: Share2, title: 'Social Banner Exporter' },
-    ] as const;
-
-    const currentTabInfo = tabs.find((t) => t.id === activeTab)!;
-
-    return (
-      <div className={`rounded-2xl border overflow-hidden shadow-2xl transition-all ${
-        isDarkMode ? 'bg-slate-950 border-slate-800' : 'bg-slate-900 border-slate-800 text-white shadow-xl'
-      }`}>
-        {/* Terminal Tab Bar */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800 overflow-x-auto scrollbar-none">
-          <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-            <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-            <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-            <span className="ml-2 text-xs font-mono text-slate-500 hidden sm:inline">gitlegacy-workspace</span>
-          </div>
-
-          <div className="flex items-center gap-1">
-            {tabs.map((tab) => {
-              const TabIcon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-medium transition-all ${
-                    isActive
-                      ? 'bg-slate-950 text-emerald-400 border border-slate-800 shadow-sm font-bold'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-                  }`}
-                >
-                  <TabIcon className="w-3.5 h-3.5" />
-                  <span>{tab.name}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Active Tool Workbench Body */}
-        <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-          <div className="lg:col-span-2 space-y-4 font-mono text-xs">
-            <div className="flex items-center gap-2 text-emerald-400 font-bold">
-              <Terminal className="w-4 h-4" />
-              <span>$ gitlegacy run --tool={activeTab} --mode=interactive</span>
-            </div>
-
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800/90 space-y-2 text-slate-300 leading-relaxed">
-              <p className="text-slate-400"># Tool Definition:</p>
-              <h3 className="text-base font-bold text-white font-sans">{currentTabInfo.title}</h3>
-              <p className="text-xs text-slate-400 font-sans">
-                {activeTab === 'planner' && 'Pixel-accurate alphanumeric text generator with full alignment and intensity controls.'}
-                {activeTab === 'badges' && 'Curate 150+ technology shields with 1-click Markdown baskets and brand colors.'}
-                {activeTab === 'history' && 'Fetch real GitHub activity stream and generate dynamic live README cards.'}
-                {activeTab === 'scripts' && 'Export backdated Git commit scripts in Bash, Python, and PowerShell.'}
-                {activeTab === 'banner' && 'Render 2x Retina high-resolution banner graphics for social profiles.'}
-              </p>
-
-              <div className="pt-2 flex flex-wrap gap-2 text-[11px] text-slate-400 font-mono">
-                <span className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-cyan-400">Status: READY</span>
-                <span className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-emerald-400">Zero Dependencies</span>
-                <span className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-purple-400">Client-Side Privacy</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-3 justify-center items-center lg:items-end">
-            <Link
-              href={
-                activeTab === 'planner'
-                  ? '/tools/art-studio'
-                  : activeTab === 'badges'
-                  ? '/tools/github-badges'
-                  : activeTab === 'history'
-                  ? '/tools/history-visualizer'
-                  : activeTab === 'scripts'
-                  ? '/tools/script-generator'
-                  : '/tools/art-studio#export-studio'
-              }
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-lg shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95 font-sans"
-            >
-              <Play className="w-4 h-4 fill-slate-950" />
-              <span>Launch {currentTabInfo.title}</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-
-            <Link
-              href="/tools"
-              className="text-xs font-mono text-slate-400 hover:text-slate-200 transition-colors"
-            >
-              [ View all tools index ↗ ]
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  return (
-    <section className="w-full space-y-6">
-      {showTitle && (
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
-          <div>
-            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-2 ${
-              isDarkMode
-                ? 'bg-slate-900 border border-slate-800 text-emerald-400'
-                : 'bg-slate-100 border border-slate-200 text-emerald-700'
-            }`}>
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Crafted for GitHub Developers</span>
-            </div>
-            <h2 className={`text-2xl sm:text-3xl font-extrabold tracking-tight ${
-              isDarkMode ? 'text-white' : 'text-slate-900'
-            }`}>
-              Developer Tools <span className="text-emerald-500">Suite</span>
-            </h2>
-          </div>
-
-          {/* Interactive Layout Direction Switcher */}
-          <div className="flex items-center p-1 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono">
-            <button
-              onClick={() => setActiveDirection('bento')}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                activeDirection === 'bento'
-                  ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              1. Bento Matrix
-            </button>
-            <button
-              onClick={() => setActiveDirection('blueprint')}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                activeDirection === 'blueprint'
-                  ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              2. Blueprint Grid
-            </button>
-            <button
-              onClick={() => setActiveDirection('terminal')}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                activeDirection === 'terminal'
-                  ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              3. Terminal IDE
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Render Active Direction */}
-      {activeDirection === 'bento' && renderBentoDirection()}
-      {activeDirection === 'blueprint' && renderBlueprintDirection()}
-      {activeDirection === 'terminal' && renderTerminalDirection()}
     </section>
   );
 }
