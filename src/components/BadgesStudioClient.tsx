@@ -13,7 +13,7 @@ interface TechBadge {
   logo: string;
   color: string;
   labelColor?: string;
-  category: 'frontend' | 'backend' | 'languages' | 'mobile' | 'databases' | 'devops' | 'marketing';
+  category: 'frontend' | 'backend' | 'languages' | 'mobile' | 'gaming' | 'databases' | 'devops' | 'marketing';
 }
 
 const TECH_BADGES: TechBadge[] = [
@@ -71,6 +71,18 @@ const TECH_BADGES: TechBadge[] = [
   { name: 'Capacitor', logo: 'capacitor', color: '119DFF', category: 'mobile' },
   { name: 'App Store', logo: 'appstore', color: '0D96F6', category: 'mobile' },
   { name: 'Google Play', logo: 'googleplay', color: '414141', category: 'mobile' },
+
+  // Game Development & 3D Rendering
+  { name: 'Unreal Engine', logo: 'unrealengine', color: '0E1128', category: 'gaming' },
+  { name: 'Unity', logo: 'unity', color: '000000', category: 'gaming' },
+  { name: 'Godot Engine', logo: 'godotengine', color: '478CBF', category: 'gaming' },
+  { name: 'Blender', logo: 'blender', color: 'E87D0D', category: 'gaming' },
+  { name: 'Three.js', logo: 'threedotjs', color: '000000', category: 'gaming' },
+  { name: 'WebGL', logo: 'webgl', color: '990000', category: 'gaming' },
+  { name: 'OpenGL', logo: 'opengl', color: '5586A4', category: 'gaming' },
+  { name: 'Vulkan', logo: 'vulkan', color: 'AC1820', category: 'gaming' },
+  { name: 'PixiJS', logo: 'pixijs', color: 'E72265', category: 'gaming' },
+  { name: 'Phaser', logo: 'phaser', color: 'B20000', category: 'gaming' },
 
   // Databases & Storage
   { name: 'PostgreSQL', logo: 'postgresql', color: '4169E1', category: 'databases' },
@@ -424,6 +436,7 @@ export function BadgesStudioClient() {
               { id: 'frontend', label: 'Frontend & UI' },
               { id: 'backend', label: 'Backend' },
               { id: 'mobile', label: 'Mobile Application Development' },
+              { id: 'gaming', label: 'Game Dev & 3D' },
               { id: 'databases', label: 'Databases' },
               { id: 'devops', label: 'DevOps & Cloud' },
               { id: 'marketing', label: 'Digital Marketing & SEO' },
