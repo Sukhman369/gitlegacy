@@ -10,25 +10,25 @@ const STATS = [
     label: 'Contributions Planned',
     value: '50,000+',
     icon: Sparkles,
-    color: 'text-emerald-400',
+    color: 'text-emerald-500',
   },
   {
     id: 'privacy',
-    label: 'Client-Side Privacy',
+    label: 'Client-Side Execution',
     value: '100%',
     icon: Lock,
     color: 'text-teal-400',
   },
   {
     id: 'tokens',
-    label: 'GitHub Tokens Needed',
+    label: 'Tokens / Access Needed',
     value: '0',
     icon: ShieldCheck,
     color: 'text-cyan-400',
   },
   {
     id: 'badges',
-    label: 'Github Badges & Shields',
+    label: 'Developer Shields',
     value: '150+',
     icon: Code2,
     color: 'text-purple-400',
@@ -39,10 +39,10 @@ export function PlatformStats() {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className={`p-6 sm:p-8 rounded-2xl border shadow-xl transition-all ${
+    <div className={`p-5 sm:p-6 rounded-2xl border transition-all ${
       isDarkMode
-        ? 'bg-slate-900/60 border-slate-800/80 backdrop-blur-md'
-        : 'bg-white/80 border-slate-200/80 backdrop-blur-md shadow-sm'
+        ? 'bg-slate-900/60 border-slate-800/80 text-slate-100'
+        : 'bg-white border-slate-200 text-slate-900 shadow-sm'
     }`}>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800/40">
         {STATS.map((stat, idx) => {
