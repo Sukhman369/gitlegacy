@@ -40,8 +40,12 @@ export function BehindTheScenesClient() {
   const { isDarkMode } = useTheme();
   const [isSponsorModalOpen, setIsSponsorModalOpen] = useState(false);
 
-  // Set this URL once your horizontal photo is ready (e.g. '/images/creator-photo.jpg' or external URL)
-  const creatorPhotoUrl: string | null = null;
+  // =====================================================================================
+  // 📸 CREATOR PHOTO CONFIGURATION:
+  // 1. Place your 1120 × 746 image in: public/images/creator.jpg (or .png / .webp)
+  // 2. Set the path below to: '/images/creator.jpg'
+  // =====================================================================================
+  const creatorPhotoUrl: string | null = null; // Set to '/images/creator.jpg' when your image is placed
 
   return (
     <div
@@ -89,29 +93,29 @@ export function BehindTheScenesClient() {
           <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="p-6 sm:p-10 space-y-8 relative z-10">
-            {/* Horizontal 16:9 / 16:10 Ratio Photo Area */}
+            {/* Horizontal 1120x746 Ratio Photo Area */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
                   <Camera className="w-4 h-4" />
-                  <span>Creator Spotlight &amp; Desk View</span>
+                  <span>Creator Spotlight &amp; Workspace</span>
                 </div>
                 <span
                   className={`text-[11px] px-2.5 py-0.5 rounded-full font-mono font-medium ${
                     isDarkMode
-                      ? 'bg-slate-800 text-slate-400'
-                      : 'bg-slate-100 text-slate-600'
+                      ? 'bg-slate-800 text-emerald-400 border border-slate-700'
+                      : 'bg-slate-100 text-emerald-600 border border-slate-200'
                   }`}
                 >
-                  Horizontal Ratio (16:9)
+                  1120 × 746 px (3:2 Ratio)
                 </span>
               </div>
 
-              {/* Horizontal Ratio Frame */}
+              {/* Exact 1120x746 Ratio Frame */}
               <div
-                className={`relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl border overflow-hidden flex flex-col items-center justify-center text-center p-6 transition-all ${
+                className={`relative w-full aspect-[1120/746] rounded-2xl border overflow-hidden flex flex-col items-center justify-center text-center p-6 transition-all ${
                   creatorPhotoUrl
-                    ? 'border-transparent'
+                    ? 'border-transparent shadow-lg'
                     : isDarkMode
                     ? 'border-dashed border-slate-700 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950'
                     : 'border-dashed border-slate-300 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100'
@@ -122,7 +126,8 @@ export function BehindTheScenesClient() {
                     src={creatorPhotoUrl}
                     alt="Sukhman - Creator of GitLegacy"
                     fill
-                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 960px"
+                    className="object-cover transition-transform duration-500 hover:scale-[1.02]"
                     priority
                   />
                 ) : (
@@ -132,19 +137,19 @@ export function BehindTheScenesClient() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-extrabold tracking-tight">
-                        Creator Photo Slot
+                        Creator Photo (1120 × 746 px)
                       </h3>
                       <p
                         className={`text-xs sm:text-sm mt-1 leading-relaxed ${
                           isDarkMode ? 'text-slate-400' : 'text-slate-500'
                         }`}
                       >
-                        Space reserved for your horizontal photo.
+                        Reserved 1120 × 746 ratio slot. Add your photo to <code className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-xs">public/images/creator.jpg</code>.
                       </p>
                     </div>
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                       <Sparkles className="w-3 h-3" />
-                      <span>Ready to add your photo anytime</span>
+                      <span>Ready to display your 1120 × 746 image</span>
                     </div>
                   </div>
                 )}
