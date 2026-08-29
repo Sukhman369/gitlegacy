@@ -45,8 +45,9 @@ export function BehindTheScenesClient() {
 
   return (
     <div
-      className={`min-h-screen flex flex-col transition-colors duration-300 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'
-        }`}
+      className={`min-h-screen flex flex-col transition-colors duration-300 ${
+        isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'
+      }`}
     >
       <Header />
 
@@ -66,8 +67,9 @@ export function BehindTheScenesClient() {
           </h1>
 
           <p
-            className={`max-w-2xl mx-auto text-sm sm:text-lg leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-              }`}
+            className={`max-w-2xl mx-auto text-sm sm:text-lg leading-relaxed ${
+              isDarkMode ? 'text-slate-400' : 'text-slate-600'
+            }`}
           >
             From a frustrating weekend attempt to renew a personal GitHub profile to building a 100%
             open-source developer branding ecosystem.
@@ -76,10 +78,11 @@ export function BehindTheScenesClient() {
 
         {/* Creator Horizontal Showcase / Photo Slot Section */}
         <section
-          className={`relative overflow-hidden rounded-3xl border shadow-2xl transition-all ${isDarkMode
+          className={`relative overflow-hidden rounded-3xl border shadow-2xl transition-all ${
+            isDarkMode
               ? 'bg-slate-900/80 border-slate-800'
               : 'bg-white border-slate-200 shadow-slate-200/60'
-            }`}
+          }`}
         >
           {/* Background Ambient Glow */}
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -94,10 +97,11 @@ export function BehindTheScenesClient() {
                   <span>Creator Spotlight &amp; Desk View</span>
                 </div>
                 <span
-                  className={`text-[11px] px-2.5 py-0.5 rounded-full font-mono font-medium ${isDarkMode
+                  className={`text-[11px] px-2.5 py-0.5 rounded-full font-mono font-medium ${
+                    isDarkMode
                       ? 'bg-slate-800 text-slate-400'
                       : 'bg-slate-100 text-slate-600'
-                    }`}
+                  }`}
                 >
                   Horizontal Ratio (16:9)
                 </span>
@@ -105,12 +109,13 @@ export function BehindTheScenesClient() {
 
               {/* Horizontal Ratio Frame */}
               <div
-                className={`relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl border overflow-hidden flex flex-col items-center justify-center text-center p-6 transition-all ${creatorPhotoUrl
+                className={`relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl border overflow-hidden flex flex-col items-center justify-center text-center p-6 transition-all ${
+                  creatorPhotoUrl
                     ? 'border-transparent'
                     : isDarkMode
-                      ? 'border-dashed border-slate-700 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950'
-                      : 'border-dashed border-slate-300 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100'
-                  }`}
+                    ? 'border-dashed border-slate-700 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950'
+                    : 'border-dashed border-slate-300 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100'
+                }`}
               >
                 {creatorPhotoUrl ? (
                   <Image
@@ -130,8 +135,9 @@ export function BehindTheScenesClient() {
                         Creator Photo Slot
                       </h3>
                       <p
-                        className={`text-xs sm:text-sm mt-1 leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-500'
-                          }`}
+                        className={`text-xs sm:text-sm mt-1 leading-relaxed ${
+                          isDarkMode ? 'text-slate-400' : 'text-slate-500'
+                        }`}
                       >
                         Space reserved for your horizontal photo.
                       </p>
@@ -155,8 +161,9 @@ export function BehindTheScenesClient() {
                   </span>
                 </div>
                 <p
-                  className={`text-xs sm:text-sm leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                    }`}
+                  className={`text-xs sm:text-sm leading-relaxed ${
+                    isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}
                 >
                   &ldquo;I built GitLegacy because when I wanted to renew my own GitHub profile, I
                   couldn&apos;t find a proper, centralized way to discover clean README badges,
@@ -171,10 +178,11 @@ export function BehindTheScenesClient() {
                   href="https://github.com/Sukhman369"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`py-2.5 px-4 rounded-xl text-xs font-bold border flex items-center justify-center gap-2 transition-all ${isDarkMode
+                  className={`py-2.5 px-4 rounded-xl text-xs font-bold border flex items-center justify-center gap-2 transition-all ${
+                    isDarkMode
                       ? 'bg-slate-950 border-slate-800 hover:bg-slate-800 text-slate-200'
                       : 'bg-slate-100 border-slate-200 hover:bg-slate-200 text-slate-800'
-                    }`}
+                  }`}
                 >
                   <GithubIcon className="w-4 h-4" />
                   <span>Follow @Sukhman369</span>
@@ -202,8 +210,9 @@ export function BehindTheScenesClient() {
               The Journey from Idea to Platform
             </h2>
             <p
-              className={`max-w-xl mx-auto text-xs sm:text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                }`}
+              className={`max-w-xl mx-auto text-xs sm:text-sm ${
+                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+              }`}
             >
               Every tool in GitLegacy exists because of real friction we experienced firsthand.
             </p>
@@ -248,10 +257,11 @@ export function BehindTheScenesClient() {
               return (
                 <div
                   key={idx}
-                  className={`p-6 sm:p-8 rounded-2xl border flex flex-col justify-between space-y-4 transition-all hover:scale-[1.01] ${isDarkMode
+                  className={`p-6 sm:p-8 rounded-2xl border flex flex-col justify-between space-y-4 transition-all hover:scale-[1.01] ${
+                    isDarkMode
                       ? 'bg-slate-900/90 border-slate-800 hover:border-slate-700'
                       : 'bg-white border-slate-200 shadow-sm hover:shadow-md'
-                    }`}
+                  }`}
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -259,10 +269,11 @@ export function BehindTheScenesClient() {
                         {card.phase}
                       </span>
                       <span
-                        className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${isDarkMode
+                        className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${
+                          isDarkMode
                             ? 'bg-slate-800 text-slate-300'
                             : 'bg-slate-100 text-slate-700'
-                          }`}
+                        }`}
                       >
                         {card.tag}
                       </span>
@@ -276,8 +287,9 @@ export function BehindTheScenesClient() {
                     </div>
 
                     <p
-                      className={`text-xs sm:text-sm leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                        }`}
+                      className={`text-xs sm:text-sm leading-relaxed ${
+                        isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                      }`}
                     >
                       {card.description}
                     </p>
@@ -290,8 +302,9 @@ export function BehindTheScenesClient() {
 
         {/* Technical Architecture: Under the Hood */}
         <section
-          className={`p-6 sm:p-10 rounded-3xl border shadow-xl space-y-8 ${isDarkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white border-slate-200 shadow-sm'
-            }`}
+          className={`p-6 sm:p-10 rounded-3xl border shadow-xl space-y-8 ${
+            isDarkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white border-slate-200 shadow-sm'
+          }`}
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b pb-6 border-slate-800/80">
             <div className="space-y-1">
@@ -314,8 +327,9 @@ export function BehindTheScenesClient() {
                 <h4>53-Week Matrix Algorithm</h4>
               </div>
               <p
-                className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                  }`}
+                className={`text-xs leading-relaxed ${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}
               >
                 Calculates Sunday-aligned week columns, leap-year offsets, and maps commit intensities
                 (0 to 4) directly to standard GitHub contribution percentiles.
@@ -328,8 +342,9 @@ export function BehindTheScenesClient() {
                 <h4>Clean HTML Basket Bundler</h4>
               </div>
               <p
-                className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                  }`}
+                className={`text-xs leading-relaxed ${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}
               >
                 Aggregates dozens of selected technology shields into a single, beautifully centered
                 `&lt;p align=&quot;center&quot;&gt;` block to eliminate markdown clutter.
@@ -342,8 +357,9 @@ export function BehindTheScenesClient() {
                 <h4>Non-Destructive Scripts</h4>
               </div>
               <p
-                className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                  }`}
+                className={`text-xs leading-relaxed ${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}
               >
                 Generates standalone Bash, PowerShell, and Python scripts using isolated empty
                 repositories so your production repositories are never touched or modified.
@@ -357,8 +373,9 @@ export function BehindTheScenesClient() {
           <div className="text-center space-y-2">
             <h2 className="text-2xl sm:text-3xl font-black">Our Core Principles</h2>
             <p
-              className={`text-xs sm:text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                }`}
+              className={`text-xs sm:text-sm ${
+                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+              }`}
             >
               The non-negotiable values guiding how GitLegacy is built and maintained.
             </p>
@@ -391,18 +408,20 @@ export function BehindTheScenesClient() {
               return (
                 <div
                   key={idx}
-                  className={`p-5 rounded-2xl border space-y-2.5 ${isDarkMode
+                  className={`p-5 rounded-2xl border space-y-2.5 ${
+                    isDarkMode
                       ? 'bg-slate-900/60 border-slate-800'
                       : 'bg-white border-slate-200'
-                    }`}
+                  }`}
                 >
                   <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 w-fit">
                     <Icon className="w-4 h-4" />
                   </div>
                   <h4 className="text-sm font-bold">{p.title}</h4>
                   <p
-                    className={`text-xs ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                      }`}
+                    className={`text-xs ${
+                      isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                    }`}
                   >
                     {p.desc}
                   </p>
@@ -423,8 +442,9 @@ export function BehindTheScenesClient() {
               Help Us Build the Ultimate GitHub Studio
             </h3>
             <p
-              className={`text-xs sm:text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-600'
-                }`}
+              className={`text-xs sm:text-sm ${
+                isDarkMode ? 'text-slate-300' : 'text-slate-600'
+              }`}
             >
               Whether it’s starring the repo on GitHub, adding a custom color palette, or contributing
               a new pixel art preset—we’d love to have you involved!
@@ -443,10 +463,11 @@ export function BehindTheScenesClient() {
             </a>
             <Link
               href="/contribute"
-              className={`py-3 px-6 rounded-xl text-xs font-bold border flex items-center gap-2 transition-all ${isDarkMode
+              className={`py-3 px-6 rounded-xl text-xs font-bold border flex items-center gap-2 transition-all ${
+                isDarkMode
                   ? 'bg-slate-900 border-slate-800 hover:bg-slate-800 text-slate-200'
                   : 'bg-white border-slate-300 hover:bg-slate-100 text-slate-800'
-                }`}
+              }`}
             >
               <GitPullRequest className="w-4 h-4" />
               <span>Contribution Guide</span>
