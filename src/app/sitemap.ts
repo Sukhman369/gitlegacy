@@ -63,6 +63,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...blogEntries,
     {
+      url: `${baseUrl}/behind-the-scenes`,
+      lastModified: new Date('2026-08-29'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/contribute`,
       lastModified: new Date('2026-08-01'),
       changeFrequency: 'monthly',
