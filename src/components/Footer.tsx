@@ -97,9 +97,9 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/behind-the-scenes" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium text-emerald-400">
+                <Link href="/behind-the-scene" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium text-emerald-400">
                   <Compass className="w-3.5 h-3.5" />
-                  <span>Behind the Scenes • Story</span>
+                  <span>Behind the Scene</span>
                 </Link>
               </li>
               <li>

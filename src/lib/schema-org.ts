@@ -96,6 +96,20 @@ export function getSiteNavigationSchema() {
         description: 'Generate standalone Bash, Python & PowerShell backdated commit scripts',
         url: `${BASE_URL}/tools/script-generator`,
       },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 5,
+        name: 'Behind the Scene',
+        description: 'The origin story and technical architecture behind GitLegacy',
+        url: `${BASE_URL}/behind-the-scene`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 6,
+        name: 'Contribute Guide',
+        description: 'Open-source guide on contributing presets, themes, and badges',
+        url: `${BASE_URL}/contribute`,
+      },
     ],
   };
 }

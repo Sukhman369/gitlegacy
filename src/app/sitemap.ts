@@ -56,6 +56,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/themes`,
+      lastModified: new Date('2026-08-17'),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: new Date('2026-08-17'),
       changeFrequency: 'weekly',
@@ -63,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...blogEntries,
     {
-      url: `${baseUrl}/behind-the-scenes`,
+      url: `${baseUrl}/behind-the-scene`,
       lastModified: new Date('2026-08-29'),
       changeFrequency: 'monthly',
       priority: 0.7,

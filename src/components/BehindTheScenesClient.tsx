@@ -54,7 +54,7 @@ export function BehindTheScenesClient() {
         <div className="text-center space-y-5">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             <Compass className="w-4 h-4" />
-            <span>Behind the Scenes • The Origin Story</span>
+            <span>Behind the Scene • The Origin Story</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
