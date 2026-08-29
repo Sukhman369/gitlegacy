@@ -116,6 +116,7 @@ export function BehindTheScenesClient() {
                     src={creatorPhotoUrl}
                     alt="Sukhman - Creator of GitLegacy"
                     fill
+                    unoptimized
                     sizes="(max-width: 1024px) 100vw, 960px"
                     className="object-cover transition-transform duration-500 hover:scale-[1.02]"
                     priority
