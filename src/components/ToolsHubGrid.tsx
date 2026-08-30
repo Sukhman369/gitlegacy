@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useTheme } from '../context/ThemeContext';
 import {
   Palette,
@@ -20,6 +21,7 @@ import {
 } from '../lib/calendar-engine';
 
 export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
+  const router = useRouter();
   const { isDarkMode } = useTheme();
   
   // Interactive Bento State
@@ -78,18 +80,27 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
       {/* Bento Matrix Grid - Boxy Sharp Aesthetic */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {/* Bento Item 1: Contribution Art Planner (Spans 2 cols) */}
-        <div className={`md:col-span-2 lg:col-span-2 p-6 border flex flex-col justify-between transition-all duration-200 ${
-          isDarkMode
-            ? 'bg-slate-900/80 border-slate-800 hover:border-emerald-500/40'
-            : 'bg-white border-slate-200 hover:border-emerald-500/50 shadow-sm'
-        }`}>
+        <div
+          onClick={() => router.push(`/tools/art-studio?text=${encodeURIComponent(bentoWord)}`)}
+          className={`md:col-span-2 lg:col-span-2 p-6 border flex flex-col justify-between transition-all duration-200 cursor-pointer group ${
+            isDarkMode
+              ? 'bg-slate-900/80 border-slate-800 hover:border-emerald-500/60'
+              : 'bg-white border-slate-200 hover:border-emerald-500/70 shadow-sm'
+          }`}
+        >
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className={`p-2.5 border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-emerald-400' : 'bg-slate-100 border-slate-200 text-emerald-600'}`}>
+              <div className={`p-2.5 border transition-colors ${
+                isDarkMode
+                  ? 'bg-slate-950 border-slate-800 text-emerald-400 group-hover:border-emerald-500/40'
+                  : 'bg-slate-100 border-slate-200 text-emerald-600 group-hover:border-emerald-500/50'
+              }`}>
                 <Palette className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-base sm:text-lg font-bold">Contribution Art Planner</h3>
+                <h3 className="text-base sm:text-lg font-bold group-hover:text-emerald-400 transition-colors">
+                  Contribution Art Planner
+                </h3>
                 <p className="text-xs text-slate-400">53-Week Pixel Matrix Engine</p>
               </div>
             </div>
@@ -99,16 +110,22 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
             </p>
 
             {/* Embedded Micro-Canvas Preview */}
-            <div className={`p-3.5 border space-y-2.5 ${
-              isDarkMode ? 'bg-slate-950/80 border-slate-800/80' : 'bg-slate-50 border-slate-200'
-            }`}>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={`p-3.5 border space-y-2.5 ${
+                isDarkMode ? 'bg-slate-950/80 border-slate-800/80' : 'bg-slate-50 border-slate-200'
+              }`}
+            >
               <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
                 <span>Preview Matrix:</span>
                 <div className="flex gap-1">
                   {['HIRE ME', 'OCTO', 'CODE', 'DEV'].map((w) => (
                     <button
                       key={w}
-                      onClick={() => setBentoWord(w)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setBentoWord(w);
+                      }}
                       className={`px-2 py-0.5 text-[10px] font-bold border transition-colors ${
                         bentoWord === w
                           ? 'bg-emerald-500 border-emerald-400 text-slate-950'
@@ -155,29 +172,35 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
 
           <div className="pt-4 mt-4 border-t border-slate-800/60 flex items-center justify-between">
             <span className="text-[11px] font-mono text-slate-400">Word: &quot;{bentoWord}&quot;</span>
-            <Link
-              href={`/tools/art-studio?text=${encodeURIComponent(bentoWord)}`}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
-            >
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 group-hover:text-emerald-300 transition-colors">
               <span>Launch Studio</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
           </div>
         </div>
 
         {/* Bento Item 2: Badge & Shield Studio (Spans 2 cols) */}
-        <div className={`md:col-span-1 lg:col-span-2 p-6 border flex flex-col justify-between transition-all duration-200 ${
-          isDarkMode
-            ? 'bg-slate-900/80 border-slate-800 hover:border-cyan-500/40'
-            : 'bg-white border-slate-200 hover:border-cyan-500/50 shadow-sm'
-        }`}>
+        <div
+          onClick={() => router.push('/tools/github-badges')}
+          className={`md:col-span-1 lg:col-span-2 p-6 border flex flex-col justify-between transition-all duration-200 cursor-pointer group ${
+            isDarkMode
+              ? 'bg-slate-900/80 border-slate-800 hover:border-cyan-500/60'
+              : 'bg-white border-slate-200 hover:border-cyan-500/70 shadow-sm'
+          }`}
+        >
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className={`p-2.5 border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-cyan-400' : 'bg-slate-100 border-slate-200 text-cyan-600'}`}>
+              <div className={`p-2.5 border transition-colors ${
+                isDarkMode
+                  ? 'bg-slate-950 border-slate-800 text-cyan-400 group-hover:border-cyan-500/40'
+                  : 'bg-slate-100 border-slate-200 text-cyan-600 group-hover:border-cyan-500/50'
+              }`}>
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-base sm:text-lg font-bold">Badge & Shield Studio</h3>
+                <h3 className="text-base sm:text-lg font-bold group-hover:text-cyan-400 transition-colors">
+                  Badge & Shield Studio
+                </h3>
                 <p className="text-xs text-slate-400">150+ Verified Shields</p>
               </div>
             </div>
@@ -187,9 +210,12 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
             </p>
 
             {/* Embedded Live Shield Samples */}
-            <div className={`p-3 border flex flex-wrap gap-2 items-center ${
-              isDarkMode ? 'bg-slate-950/80 border-slate-800/80' : 'bg-slate-50 border-slate-200'
-            }`}>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={`p-3 border flex flex-wrap gap-2 items-center ${
+                isDarkMode ? 'bg-slate-950/80 border-slate-800/80' : 'bg-slate-50 border-slate-200'
+              }`}
+            >
               {[
                 { name: 'Next.js', color: 'bg-black text-white border-slate-700' },
                 { name: 'TypeScript', color: 'bg-[#3178C6] text-white border-blue-500/40' },
@@ -204,7 +230,10 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
               ].map((s) => (
                 <button
                   key={s.name}
-                  onClick={() => handleCopyShield(s.name)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCopyShield(s.name);
+                  }}
                   className={`px-2.5 py-1 text-[11px] font-bold font-mono border flex items-center gap-1.5 transition-transform hover:scale-105 active:scale-95 shadow-xs ${s.color}`}
                   title="Click to copy badge markdown"
                 >
@@ -217,26 +246,28 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
 
           <div className="pt-4 mt-4 border-t border-slate-800/60 flex items-center justify-between">
             <span className="text-[11px] font-mono text-slate-400">16 Categories</span>
-            <Link
-              href="/tools/github-badges"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
-            >
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors">
               <span>Explore Badges</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
           </div>
         </div>
 
         {/* Bento Item 3: GitHub History Visualizer (1 col) */}
-        <div className={`p-5 border flex flex-col justify-between transition-all duration-200 ${
-          isDarkMode
-            ? 'bg-slate-900/80 border-slate-800 hover:border-teal-500/40'
-            : 'bg-white border-slate-200 hover:border-teal-500/50 shadow-sm'
-        }`}>
+        <div
+          onClick={() => router.push('/tools/history-visualizer')}
+          className={`p-5 border flex flex-col justify-between transition-all duration-200 cursor-pointer group ${
+            isDarkMode
+              ? 'bg-slate-900/80 border-slate-800 hover:border-teal-500/60'
+              : 'bg-white border-slate-200 hover:border-teal-500/70 shadow-sm'
+          }`}
+        >
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <BarChart3 className="w-5 h-5 text-teal-400" />
-              <h4 className="text-sm font-bold">History Visualizer</h4>
+              <h4 className="text-sm font-bold group-hover:text-teal-300 transition-colors">
+                History Visualizer
+              </h4>
             </div>
             <p className="text-xs text-slate-400">
               Fetch real 365-day contributions for any username and create dynamic SVG badges.
@@ -247,28 +278,34 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
               $ gitlegacy fetch @username
             </div>
           </div>
-          <Link
-            href="/tools/history-visualizer"
-            className="pt-3 text-xs font-bold text-teal-400 flex items-center gap-1 hover:text-teal-300 mt-2"
-          >
+          <div className="pt-3 text-xs font-bold text-teal-400 flex items-center gap-1 group-hover:text-teal-300 mt-2">
             <span>Analyze User</span>
-            <ArrowRight className="w-3 h-3" />
-          </Link>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </div>
         </div>
 
         {/* Bento Item 4: Preset Patterns Gallery (2 cols) */}
-        <div className={`md:col-span-2 lg:col-span-2 p-5 border flex flex-col justify-between transition-all duration-200 ${
-          isDarkMode
-            ? 'bg-slate-900/80 border-slate-800 hover:border-amber-500/40'
-            : 'bg-white border-slate-200 hover:border-amber-500/50 shadow-sm'
-        }`}>
+        <div
+          onClick={() => router.push('/tools/presets')}
+          className={`md:col-span-2 lg:col-span-2 p-5 border flex flex-col justify-between transition-all duration-200 cursor-pointer group ${
+            isDarkMode
+              ? 'bg-slate-900/80 border-slate-800 hover:border-amber-500/60'
+              : 'bg-white border-slate-200 hover:border-amber-500/70 shadow-sm'
+          }`}
+        >
           <div className="space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className={`p-2 border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-amber-400' : 'bg-slate-100 border-slate-200 text-amber-600'}`}>
+              <div className={`p-2 border transition-colors ${
+                isDarkMode
+                  ? 'bg-slate-950 border-slate-800 text-amber-400 group-hover:border-amber-500/40'
+                  : 'bg-slate-100 border-slate-200 text-amber-600 group-hover:border-amber-500/50'
+              }`}>
                 <LayoutTemplate className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm sm:text-base font-bold">Preset Patterns Gallery</h4>
+                <h4 className="text-sm sm:text-base font-bold group-hover:text-amber-400 transition-colors">
+                  Preset Patterns Gallery
+                </h4>
                 <p className="text-xs text-slate-400">40+ Curated Grid Templates</p>
               </div>
             </div>
@@ -277,9 +314,12 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
               Browse signature art templates for gaming, career branding, retro arcade icons, and tech stack initials.
             </p>
 
-            <div className={`p-3 border flex flex-wrap gap-2 items-center ${
-              isDarkMode ? 'bg-slate-950/80 border-slate-800/80' : 'bg-slate-50 border-slate-200'
-            }`}>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={`p-3 border flex flex-wrap gap-2 items-center ${
+                isDarkMode ? 'bg-slate-950/80 border-slate-800/80' : 'bg-slate-50 border-slate-200'
+              }`}
+            >
               {[
                 { name: '🕹️ INVADERS', text: 'INVADERS' },
                 { name: '💼 HIRE ME', text: 'HIRE ME' },
@@ -289,6 +329,7 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
                 <Link
                   key={p.text}
                   href={`/tools/art-studio?text=${encodeURIComponent(p.text)}`}
+                  onClick={(e) => e.stopPropagation()}
                   className={`px-2.5 py-1 text-[11px] font-bold font-mono border transition-transform hover:scale-105 ${
                     isDarkMode
                       ? 'bg-slate-900 border-slate-700 text-amber-300 hover:border-amber-400'
@@ -303,26 +344,28 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
 
           <div className="pt-3 border-t border-slate-800/60 flex items-center justify-between mt-2">
             <span className="text-[11px] font-mono text-slate-400">Gaming • Career • Logos</span>
-            <Link
-              href="/tools/presets"
-              className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors"
-            >
+            <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 group-hover:text-amber-300 transition-colors">
               <span>Explore Gallery</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
           </div>
         </div>
 
         {/* Bento Item 5: Social Banner Exporter (1 col) */}
-        <div className={`p-5 border flex flex-col justify-between transition-all duration-200 ${
-          isDarkMode
-            ? 'bg-slate-900/80 border-slate-800 hover:border-purple-500/40'
-            : 'bg-white border-slate-200 hover:border-purple-500/50 shadow-sm'
-        }`}>
+        <div
+          onClick={() => router.push('/tools/art-studio#export-studio')}
+          className={`p-5 border flex flex-col justify-between transition-all duration-200 cursor-pointer group ${
+            isDarkMode
+              ? 'bg-slate-900/80 border-slate-800 hover:border-purple-500/60'
+              : 'bg-white border-slate-200 hover:border-purple-500/70 shadow-sm'
+          }`}
+        >
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <Share2 className="w-5 h-5 text-purple-400" />
-              <h4 className="text-sm font-bold">Social Banner 4K</h4>
+              <h4 className="text-sm font-bold group-hover:text-purple-300 transition-colors">
+                Social Banner 4K
+              </h4>
             </div>
             <p className="text-xs text-slate-400">
               Export 1500x500 X/Twitter & 1584x396 LinkedIn high-res covers.
@@ -331,13 +374,10 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
               2x Retina Render Engine
             </div>
           </div>
-          <Link
-            href="/tools/art-studio#export-studio"
-            className="pt-3 text-xs font-bold text-purple-400 flex items-center gap-1 hover:text-purple-300 mt-2"
-          >
+          <div className="pt-3 text-xs font-bold text-purple-400 flex items-center gap-1 group-hover:text-purple-300 mt-2">
             <span>Export Banners</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </div>
         </div>
       </div>
     </section>
