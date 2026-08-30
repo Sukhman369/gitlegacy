@@ -167,8 +167,8 @@ export const Footer: React.FC = () => {
         <div className="pt-6 sm:pt-10 pb-2 overflow-hidden select-none pointer-events-none text-center">
           <div className={`font-mono font-black tracking-tighter text-[13.5vw] leading-[0.8] uppercase bg-gradient-to-b ${
             isDarkMode
-              ? 'from-slate-800/70 via-slate-800/20 to-transparent text-transparent bg-clip-text'
-              : 'from-slate-300/80 via-slate-200/30 to-transparent text-transparent bg-clip-text'
+              ? 'from-slate-800/80 via-slate-800/40 to-slate-900/30 text-transparent bg-clip-text'
+              : 'from-slate-400/90 via-slate-300/90 to-slate-300/50 text-transparent bg-clip-text'
           }`}>
             GITLEGACY
           </div>
