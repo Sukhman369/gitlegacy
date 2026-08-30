@@ -159,19 +159,25 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
               isDarkMode ? 'bg-slate-950/80 border-slate-800/80' : 'bg-slate-50 border-slate-200'
             }`}>
               {[
-                { name: 'Next.js', color: 'bg-black text-white' },
-                { name: 'TypeScript', color: 'bg-blue-600 text-white' },
-                { name: 'React', color: 'bg-cyan-500 text-slate-950' },
-                { name: 'Docker', color: 'bg-sky-600 text-white' },
+                { name: 'Next.js', color: 'bg-black text-white border-slate-700' },
+                { name: 'TypeScript', color: 'bg-[#3178C6] text-white border-blue-500/40' },
+                { name: 'React', color: 'bg-[#087ea4] text-white border-cyan-400/40' },
+                { name: 'Python', color: 'bg-[#3776AB] text-white border-blue-400/40' },
+                { name: 'TailwindCSS', color: 'bg-[#0f172a] text-[#38BDF8] border-[#06B6D4]/40' },
+                { name: 'Docker', color: 'bg-[#2496ED] text-white border-sky-400/40' },
+                { name: 'Node.js', color: 'bg-[#5FA04E] text-white border-green-500/40' },
+                { name: 'PostgreSQL', color: 'bg-[#4169E1] text-white border-blue-500/40' },
+                { name: 'Go', color: 'bg-[#00ADD8] text-slate-950 border-cyan-400/40' },
+                { name: 'GitHub PRO', color: 'bg-emerald-500 text-slate-950 border-emerald-400' },
               ].map((s) => (
                 <button
                   key={s.name}
                   onClick={() => handleCopyShield(s.name)}
-                  className={`px-2.5 py-1 rounded-md text-[11px] font-bold font-mono border border-slate-700 flex items-center gap-1.5 transition-transform hover:scale-105 active:scale-95 ${s.color}`}
+                  className={`px-2.5 py-1 rounded-md text-[11px] font-bold font-mono border flex items-center gap-1.5 transition-transform hover:scale-105 active:scale-95 shadow-xs ${s.color}`}
                   title="Click to copy badge markdown"
                 >
                   <span>{s.name}</span>
-                  {copiedShield === s.name ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-2.5 h-2.5 opacity-60" />}
+                  {copiedShield === s.name ? <Check className="w-3 h-3 text-emerald-300" /> : <Copy className="w-2.5 h-2.5 opacity-60" />}
                 </button>
               ))}
             </div>
