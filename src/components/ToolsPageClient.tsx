@@ -63,30 +63,6 @@ function ToolsContent() {
               <p className={`text-xs sm:text-sm leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                 GitLegacy is built with Next.js, TypeScript, and TailwindCSS. The platform is modular — easily contribute 53-week matrix algorithms, color palettes, tech badges, or social export layouts.
               </p>
-
-              {/* Developer Specs Pillars */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                <div className={`p-3 border font-mono ${
-                  isDarkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-slate-50 border-slate-200'
-                }`}>
-                  <span className="text-[10px] text-emerald-500 font-bold block mb-0.5">01 // MATRIX ENGINE</span>
-                  <span className="text-xs text-slate-300 font-bold">5x7 Pixel Font Glyphs</span>
-                </div>
-
-                <div className={`p-3 border font-mono ${
-                  isDarkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-slate-50 border-slate-200'
-                }`}>
-                  <span className="text-[10px] text-emerald-500 font-bold block mb-0.5">02 // PALETTES</span>
-                  <span className="text-xs text-slate-300 font-bold">5-Level Hex Arrays</span>
-                </div>
-
-                <div className={`p-3 border font-mono ${
-                  isDarkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-slate-50 border-slate-200'
-                }`}>
-                  <span className="text-[10px] text-emerald-500 font-bold block mb-0.5">03 // BADGE STUDIO</span>
-                  <span className="text-xs text-slate-300 font-bold">Shields.io Proxy API</span>
-                </div>
-              </div>
             </div>
 
             {/* Action Buttons - Sharp Rectangular Styling */}
