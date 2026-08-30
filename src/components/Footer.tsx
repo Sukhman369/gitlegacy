@@ -81,12 +81,6 @@ export const Footer: React.FC = () => {
                   <span>Preset Patterns Gallery</span>
                 </Link>
               </li>
-              <li>
-                <Link href="/tools/script-generator" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
-                  <Terminal className="w-3.5 h-3.5 text-slate-500" />
-                  <span>Automation Script Exporter</span>
-                </Link>
-              </li>
             </ul>
           </div>
 

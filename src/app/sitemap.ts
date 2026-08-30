@@ -44,16 +44,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/tools/script-generator`,
-      lastModified: new Date('2026-08-01'),
+      url: `${baseUrl}/tools/presets`,
+      lastModified: new Date('2026-08-30'),
       changeFrequency: 'weekly',
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/tools/presets`,
-      lastModified: new Date('2026-08-01'),
-      changeFrequency: 'weekly',
-      priority: 0.7,
     },
     {
       url: `${baseUrl}/themes`,

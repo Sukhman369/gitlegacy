@@ -92,9 +92,9 @@ export function getSiteNavigationSchema() {
       {
         '@type': 'SiteNavigationElement',
         position: 4,
-        name: 'CLI Script Generator',
-        description: 'Generate standalone Bash, Python & PowerShell backdated commit scripts',
-        url: `${BASE_URL}/tools/script-generator`,
+        name: 'Preset Patterns Gallery',
+        description: 'Explore ready-to-use pixel art patterns, gaming icons, and custom initials',
+        url: `${BASE_URL}/tools/presets`,
       },
       {
         '@type': 'SiteNavigationElement',

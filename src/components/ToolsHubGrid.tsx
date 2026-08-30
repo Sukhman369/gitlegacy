@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   Share2,
   LayoutTemplate,
-  Terminal,
   ArrowRight,
   Sparkles,
   Copy,
@@ -22,7 +21,6 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
   // Interactive Bento State
   const [bentoWord, setBentoWord] = useState('OCTO');
   const [copiedShield, setCopiedShield] = useState<string | null>(null);
-  const [scriptLang, setScriptLang] = useState<'bash' | 'py' | 'ps1'>('bash');
 
   const handleCopyShield = (shieldName: string) => {
     setCopiedShield(shieldName);
@@ -230,49 +228,66 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
           </Link>
         </div>
 
-        {/* Bento Item 4: Automation Script Engine (2 cols) */}
+        {/* Bento Item 4: Preset Patterns Gallery (2 cols) */}
         <div className={`md:col-span-2 lg:col-span-2 p-5 rounded-2xl border flex flex-col justify-between transition-all duration-200 ${
           isDarkMode
-            ? 'bg-slate-900/80 border-slate-800 hover:border-emerald-500/40'
-            : 'bg-white border-slate-200 hover:border-emerald-500/50 shadow-sm'
+            ? 'bg-slate-900/80 border-slate-800 hover:border-amber-500/40'
+            : 'bg-white border-slate-200 hover:border-amber-500/50 shadow-sm'
         }`}>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Terminal className="w-5 h-5 text-emerald-400" />
-                <h4 className="text-sm font-bold">Automation Script Engine</h4>
+              <div className="flex items-center gap-2.5">
+                <div className={`p-2 rounded-xl border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-amber-400' : 'bg-slate-100 border-slate-200 text-amber-600'}`}>
+                  <LayoutTemplate className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm sm:text-base font-bold">Preset Patterns Gallery</h4>
+                  <p className="text-xs text-slate-400">40+ Curated Grid Templates</p>
+                </div>
               </div>
-              <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800">
-                {(['bash', 'py', 'ps1'] as const).map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => setScriptLang(l)}
-                    className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
-                      scriptLang === l ? 'bg-emerald-500 text-slate-950' : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    .{l}
-                  </button>
-                ))}
-              </div>
+              <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                1-Click Studio Load
+              </span>
             </div>
 
-            <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] font-mono text-emerald-400 overflow-x-auto">
-              <code>
-                {scriptLang === 'bash' && `GIT_AUTHOR_DATE="2026-04-12T12:00:00" git commit --allow-empty -m "legacy"`}
-                {scriptLang === 'py' && `os.environ["GIT_AUTHOR_DATE"] = "2026-04-12T12:00:00"; subprocess.run(...)`}
-                {scriptLang === 'ps1' && `$env:GIT_AUTHOR_DATE="2026-04-12T12:00:00"; git commit -m "legacy"`}
-              </code>
+            <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              Browse signature art templates for gaming, career branding, retro arcade icons, and tech stack initials.
+            </p>
+
+            <div className={`p-3 rounded-xl border flex flex-wrap gap-2 items-center ${
+              isDarkMode ? 'bg-slate-950/80 border-slate-800/80' : 'bg-slate-50 border-slate-200'
+            }`}>
+              {[
+                { name: '🕹️ INVADERS', text: 'INVADERS' },
+                { name: '💼 HIRE ME', text: 'HIRE ME' },
+                { name: '🚀 SPACESHIP', text: 'SPACESHIP' },
+                { name: '❤️ HEART', text: 'HEART' },
+              ].map((p) => (
+                <Link
+                  key={p.text}
+                  href={`/tools/art-studio?text=${encodeURIComponent(p.text)}`}
+                  className={`px-2.5 py-1 rounded-md text-[11px] font-bold font-mono border transition-transform hover:scale-105 ${
+                    isDarkMode
+                      ? 'bg-slate-900 border-slate-700 text-amber-300 hover:border-amber-400'
+                      : 'bg-white border-slate-200 text-amber-700 hover:border-amber-500 shadow-xs'
+                  }`}
+                >
+                  {p.name}
+                </Link>
+              ))}
             </div>
           </div>
 
-          <Link
-            href="/tools/script-generator"
-            className="pt-3 text-xs font-bold text-emerald-400 flex items-center gap-1 hover:text-emerald-300 mt-2"
-          >
-            <span>Export Automation Scripts</span>
-            <ArrowRight className="w-3 h-3" />
-          </Link>
+          <div className="pt-3 border-t border-slate-800/60 flex items-center justify-between mt-2">
+            <span className="text-[11px] font-mono text-slate-400">Gaming • Career • Logos</span>
+            <Link
+              href="/tools/presets"
+              className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors"
+            >
+              <span>Explore Gallery</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
 
         {/* Bento Item 5: Social Banner Exporter (1 col) */}
