@@ -11,9 +11,9 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
-  // Initialize theme from localStorage or system preference on mount
+  // Initialize theme from localStorage or default to bright (light) theme
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('gitlegacy-theme');
@@ -22,9 +22,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setIsDarkMode(isDark);
         updateHtmlClass(isDark);
       } else {
-        // Default to dark theme
-        setIsDarkMode(true);
-        updateHtmlClass(true);
+        // Default to bright (light) theme
+        setIsDarkMode(false);
+        updateHtmlClass(false);
       }
     }
   }, []);
