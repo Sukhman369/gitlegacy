@@ -122,46 +122,46 @@ export default function ThemesPage() {
           ))}
         </div>
 
-        {/* Community Theme Motivator Banner */}
-        <section className={`relative overflow-hidden rounded-3xl border p-8 sm:p-10 transition-all ${
+        {/* Community Theme Motivator Banner - Cutting Edge Boxy Aesthetic */}
+        <section className={`relative overflow-hidden border-2 border-l-4 border-l-purple-500 p-7 sm:p-9 transition-all ${
           isDarkMode
-            ? 'bg-gradient-to-br from-purple-950/40 via-slate-900/80 to-slate-950 border-purple-500/30'
-            : 'bg-gradient-to-br from-purple-50 via-white to-slate-50 border-purple-200 shadow-lg'
+            ? 'bg-slate-900/90 border-purple-500/30'
+            : 'bg-white border-purple-300 shadow-md'
         }`}>
-          {/* Subtle Background Glow Accent */}
-          <div className="absolute top-0 right-0 -mt-8 -mr-8 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle Cyber Grid Accent */}
+          <div className="absolute top-0 right-0 -mt-6 -mr-6 w-56 h-56 bg-purple-500/10 blur-3xl pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-5">
-              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+            <div className="lg:col-span-7 space-y-4">
+              <div className={`inline-flex items-center gap-2 px-3 py-1 border text-xs font-mono font-bold uppercase tracking-wider ${
                 isDarkMode
-                  ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
-                  : 'bg-purple-100 text-purple-800 border border-purple-200'
+                  ? 'bg-purple-950/60 text-purple-300 border-purple-500/40'
+                  : 'bg-purple-50 text-purple-900 border-purple-300'
               }`}>
-                <PlusCircle className="w-4 h-4 text-purple-400" />
+                <PlusCircle className="w-3.5 h-3.5 text-purple-400" />
                 <span>Open Source Contribution</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black tracking-tight font-sans">
                 Missing your favorite palette?{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400">
                   Add it in 2 minutes!
                 </span>
               </h2>
 
-              <p className={`text-sm sm:text-base leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+              <p className={`text-xs sm:text-sm leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                 From <strong>Catppuccin</strong>, <strong>Nord</strong>, and <strong>Gruvbox</strong> to custom neon aesthetic gradients — GitLegacy is open-source. Anyone can contribute a 5-level commit intensity theme with a single GitHub Pull Request.
               </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-2">
+              {/* Action Buttons - Sharp Rectangular Styling */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
                   href="https://github.com/Sukhman369/gitlegacy"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition-transform hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-purple-400/60 bg-purple-600 hover:bg-purple-500 text-white font-mono font-bold text-xs shadow-md transition-transform hover:scale-[1.02] active:scale-95"
                 >
                   <GitPullRequest className="w-4 h-4" />
                   <span>Submit Theme on GitHub</span>
@@ -170,10 +170,10 @@ export default function ThemesPage() {
 
                 <Link
                   href="/contribute"
-                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border font-bold text-xs transition-all ${
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 border font-mono font-bold text-xs transition-all hover:scale-[1.02] ${
                     isDarkMode
-                      ? 'bg-slate-900/80 border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-white'
-                      : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 shadow-xs'
+                      ? 'bg-slate-950 border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-white'
+                      : 'bg-slate-50 border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 shadow-xs'
                   }`}
                 >
                   <BookOpen className="w-4 h-4 text-purple-400" />
@@ -182,19 +182,19 @@ export default function ThemesPage() {
               </div>
             </div>
 
-            {/* Right Interactive Code Blueprint Box */}
+            {/* Right Interactive Code Blueprint Box - Boxy Terminal */}
             <div className="lg:col-span-5">
-              <div className={`rounded-2xl border p-4.5 space-y-3 font-mono text-xs shadow-xl ${
-                isDarkMode ? 'bg-[#0d1117] border-slate-800' : 'bg-slate-900 text-slate-100 border-slate-800'
+              <div className={`border p-4 space-y-3 font-mono text-xs shadow-xl ${
+                isDarkMode ? 'bg-[#0d1117] border-slate-800' : 'bg-slate-950 text-slate-100 border-slate-800'
               }`}>
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2.5 text-[11px] text-slate-400">
-                  <span className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                  <span className="flex items-center gap-2 font-mono">
+                    <span className="w-2 h-2 bg-emerald-500" />
                     <span>src/lib/theme-config.ts</span>
                   </span>
                   <button
                     onClick={handleCopySnippet}
-                    className="flex items-center gap-1 text-[10px] text-purple-300 hover:text-white px-2 py-1 rounded bg-slate-800 border border-slate-700 transition-colors"
+                    className="flex items-center gap-1.5 text-[10px] text-purple-300 hover:text-white px-2.5 py-1 bg-slate-800 border border-slate-700 font-mono transition-colors"
                   >
                     {copiedSnippet ? (
                       <>
@@ -214,9 +214,10 @@ export default function ThemesPage() {
                   <code>{themeSnippet}</code>
                 </pre>
 
-                <p className="text-[10px] text-slate-400 font-sans pt-1">
-                  💡 Just provide 5 hex codes from Level 0 (empty) to Level 4 (peak intensity).
-                </p>
+                <div className="pt-1.5 border-t border-slate-800/80 text-[10px] text-slate-400 font-mono flex items-center gap-1.5">
+                  <span className="text-purple-400 font-bold">$</span>
+                  <span>5 hex codes from Level 0 (empty) to Level 4 (peak).</span>
+                </div>
               </div>
             </div>
 
