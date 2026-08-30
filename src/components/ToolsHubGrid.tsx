@@ -23,7 +23,7 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
   const { isDarkMode } = useTheme();
   
   // Interactive Bento State
-  const [bentoWord, setBentoWord] = useState('OCTO');
+  const [bentoWord, setBentoWord] = useState('HIRE ME');
   const [copiedShield, setCopiedShield] = useState<string | null>(null);
 
   const currentYear = new Date().getFullYear();
@@ -105,7 +105,7 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
               <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
                 <span>Preview Matrix:</span>
                 <div className="flex gap-1">
-                  {['OCTO', 'HIRE', 'CODE', 'DEV'].map((w) => (
+                  {['HIRE ME', 'OCTO', 'CODE', 'DEV'].map((w) => (
                     <button
                       key={w}
                       onClick={() => setBentoWord(w)}
