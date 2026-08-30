@@ -130,7 +130,7 @@ export default function HistoryVisualizerPage() {
 
   return (
     <div className={`min-h-screen flex flex-col font-mono transition-colors duration-300 ${
-      isDarkMode ? 'bg-[#0d1117] text-slate-100' : 'bg-slate-900 text-slate-100'
+      isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'
     }`}>
       <script
         type="application/ld+json"
@@ -142,9 +142,11 @@ export default function HistoryVisualizerPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
           {/* LEFT SIDEBAR: Controls & 14 Theme Swatches (Reduced Width) */}
-          <aside className="lg:col-span-3 bg-[#161b22] border border-slate-800 rounded-2xl p-5 space-y-5 shadow-2xl">
+          <aside className={`lg:col-span-3 border rounded-2xl p-5 space-y-5 shadow-xl transition-all ${
+            isDarkMode ? 'bg-[#161b22] border-slate-800 text-slate-100' : 'bg-white border-slate-200 text-slate-900 shadow-sm'
+          }`}>
             <div className="space-y-1">
-              <p className="text-xs text-slate-400 font-semibold tracking-wide">
+              <p className={`text-xs font-semibold tracking-wide ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                 All your contributions in one image!
               </p>
             </div>
@@ -152,7 +154,7 @@ export default function HistoryVisualizerPage() {
             {/* Username Input & Generate Form */}
             <form onSubmit={handleGenerate} className="space-y-2.5">
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                <label className={`text-[11px] font-bold uppercase tracking-wider block mb-1 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                   GitHub Username
                 </label>
                 <input
@@ -160,7 +162,11 @@ export default function HistoryVisualizerPage() {
                   value={usernameInput}
                   onChange={(e) => setUsernameInput(e.target.value)}
                   placeholder="Enter GitHub username... (e.g. torvalds)"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0d1117] border border-slate-700 text-xs font-bold text-white placeholder-slate-500 focus:border-purple-500 focus:outline-none transition-all"
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs font-bold transition-all focus:border-purple-500 focus:outline-none ${
+                    isDarkMode
+                      ? 'bg-[#0d1117] border-slate-700 text-white placeholder-slate-500'
+                      : 'bg-slate-50 border-slate-300 text-slate-900 placeholder-slate-400 shadow-xs'
+                  }`}
                 />
               </div>
 
@@ -175,8 +181,8 @@ export default function HistoryVisualizerPage() {
             </form>
 
             {/* Theme Selector Section */}
-            <div className="space-y-3 pt-2 border-t border-slate-800">
-              <label className="text-xs font-bold tracking-wider text-slate-400 uppercase block">
+            <div className={`space-y-3 pt-2 border-t ${isDarkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+              <label className={`text-xs font-bold tracking-wider uppercase block ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                 SELECT A THEME:
               </label>
 
@@ -189,19 +195,23 @@ export default function HistoryVisualizerPage() {
                       onClick={() => setSelectedTheme(themeItem.id)}
                       className={`w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition-all ${
                         isSelected
-                          ? 'bg-slate-800/90 border-purple-500 text-white ring-1 ring-purple-500/50'
-                          : 'bg-[#0d1117]/60 border-slate-800/80 text-slate-300 hover:bg-slate-800/40 hover:border-slate-700'
+                          ? isDarkMode
+                            ? 'bg-slate-800/90 border-purple-500 text-white ring-1 ring-purple-500/50'
+                            : 'bg-purple-50 border-purple-500 text-purple-950 ring-1 ring-purple-500/50'
+                          : isDarkMode
+                          ? 'bg-[#0d1117]/60 border-slate-800/80 text-slate-300 hover:bg-slate-800/40 hover:border-slate-700'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
                         <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                          isSelected ? 'border-purple-400 bg-purple-500' : 'border-slate-600'
+                          isSelected ? 'border-purple-400 bg-purple-500' : 'border-slate-400'
                         }`}>
                           {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                         </div>
 
                         {/* Swatch Preview Bar */}
-                        <div className="flex items-center gap-0.5 p-0.5 rounded bg-slate-900 border border-slate-800">
+                        <div className={`flex items-center gap-0.5 p-0.5 rounded border ${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
                           {themeItem.levels.map((lvl, idx) => (
                             <div
                               key={idx}
@@ -220,12 +230,16 @@ export default function HistoryVisualizerPage() {
             </div>
 
             {/* GitHub Repo Star Link */}
-            <div className="pt-2 border-t border-slate-800">
+            <div className={`pt-2 border-t ${isDarkMode ? 'border-slate-800' : 'border-slate-200'}`}>
               <a
                 href="https://github.com/Sukhman369/gitlegacy"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300 transition-all"
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${
+                  isDarkMode
+                    ? 'bg-slate-900 hover:bg-slate-800 border-slate-700 text-slate-300'
+                    : 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700'
+                }`}
               >
                 <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
                 <span>Star GitLegacy</span>
@@ -237,8 +251,10 @@ export default function HistoryVisualizerPage() {
           <section className="lg:col-span-9 space-y-6">
             
             {/* Header & Actions Bar */}
-            <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-              <h2 className="text-base font-bold text-slate-200">
+            <div className={`border rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl transition-all ${
+              isDarkMode ? 'bg-[#161b22] border-slate-800 text-slate-200' : 'bg-white border-slate-200 text-slate-900 shadow-sm'
+            }`}>
+              <h2 className="text-base font-bold">
                 Your chart is ready!
               </h2>
 
@@ -270,7 +286,9 @@ export default function HistoryVisualizerPage() {
             </div>
 
             {/* Poster Canvas Display Box */}
-            <div className="p-6 rounded-2xl bg-[#0d1117] border border-slate-800 shadow-2xl flex justify-center items-center overflow-x-auto min-h-[500px]">
+            <div className={`p-6 rounded-2xl border shadow-2xl flex justify-center items-center overflow-x-auto min-h-[500px] transition-all ${
+              isDarkMode ? 'bg-[#0d1117] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
+            }`}>
               <canvas
                 ref={canvasRef}
                 className="max-w-full h-auto rounded-xl shadow-2xl transition-all"

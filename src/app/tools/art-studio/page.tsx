@@ -1,7 +1,5 @@
 import React, { Suspense } from 'react';
 import { Metadata } from 'next';
-import { Header } from '../../../components/Header';
-import { Footer } from '../../../components/Footer';
 import ArtStudioClient from '../../../components/ArtStudioClient';
 import { getSoftwareApplicationSchema } from '../../../lib/schema-org';
 import { PlannerSettings } from '../../../types/calendar';
@@ -88,15 +86,11 @@ export default async function ArtStudioPage({ searchParams }: PageProps) {
         </div>
       }
     >
-      <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(artStudioSchema) }}
-        />
-        <Header />
-        <ArtStudioClient initialSettings={initialSettings} />
-        <Footer />
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(artStudioSchema) }}
+      />
+      <ArtStudioClient initialSettings={initialSettings} />
     </Suspense>
   );
 }

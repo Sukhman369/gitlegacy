@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
+import { Header } from './Header';
+import { Footer } from './Footer';
 import { PlannerControls } from './PlannerControls';
 import { ContributionGraph } from './ContributionGraph';
 import { StatisticsPanel } from './StatisticsPanel';
@@ -70,6 +72,21 @@ export default function ArtStudioClient({ initialSettings }: ArtStudioClientProp
     }
   }, [setDarkMode]);
 
+  // Sync default canvas theme with global dark/light mode toggle if not on a custom palette
+  useEffect(() => {
+    if (isMounted) {
+      setSettings((prev) => {
+        if (prev.themeId === 'github-dark' && !isDarkMode) {
+          return { ...prev, themeId: 'github-light' };
+        }
+        if (prev.themeId === 'github-light' && isDarkMode) {
+          return { ...prev, themeId: 'github-dark' };
+        }
+        return prev;
+      });
+    }
+  }, [isDarkMode, isMounted]);
+
   // Update settings handler
   const handleUpdateSettings = (updated: Partial<PlannerSettings>) => {
     setSettings((prev) => ({ ...prev, ...updated }));
@@ -133,45 +150,55 @@ export default function ArtStudioClient({ initialSettings }: ArtStudioClientProp
   }, [calendarGrid]);
 
   return (
-    <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-10 space-y-8">
-      {/* Page Hero Header */}
-      <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
-          <Palette className="w-4 h-4" />
-          <span>Interactive 53-Week Art Studio</span>
+    <div
+      className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${
+        isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'
+      }`}
+    >
+      <Header />
+
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-10 space-y-8">
+        {/* Page Hero Header */}
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
+            <Palette className="w-4 h-4" />
+            <span>Interactive 53-Week Art Studio</span>
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight">
+            Contribution Art <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Studio & Planner</span>
+          </h1>
+          <p className={`max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+            Design custom pixel text, adjust letter spacing, nudge columns, or draw custom 8-bit artwork across your 53-week matrix.
+          </p>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-black tracking-tight">
-          Contribution Art <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Studio & Planner</span>
-        </h1>
-        <p className={`max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-          Design custom pixel text, adjust letter spacing, nudge columns, or draw custom 8-bit artwork across your 53-week matrix.
-        </p>
-      </div>
 
-      {/* Planner Controls Form */}
-      <PlannerControls
-        settings={settings}
-        onChangeSettings={handleUpdateSettings}
-        onResetGrid={handleResetGrid}
-        onCleanGrid={handleCleanGrid}
-        isDarkMode={isDarkMode}
-      />
+        {/* Planner Controls Form */}
+        <PlannerControls
+          settings={settings}
+          onChangeSettings={handleUpdateSettings}
+          onResetGrid={handleResetGrid}
+          onCleanGrid={handleCleanGrid}
+          isDarkMode={isDarkMode}
+        />
 
-      {/* Interactive GitHub Graph Preview */}
-      <ContributionGraph
-        grid={calendarGrid}
-        settings={settings}
-        onCellClick={handleCellClick}
-        onCleanGrid={handleCleanGrid}
-      />
+        {/* Interactive GitHub Graph Preview */}
+        <ContributionGraph
+          grid={calendarGrid}
+          settings={settings}
+          onCellClick={handleCellClick}
+          onCleanGrid={handleCleanGrid}
+        />
 
-      {/* Commit Analytics Panel */}
-      <StatisticsPanel stats={strategyStats} isDarkMode={isDarkMode} />
+        {/* Commit Analytics Panel */}
+        <StatisticsPanel stats={strategyStats} isDarkMode={isDarkMode} />
 
-      {/* Export Panel */}
-      <div id="export-studio">
-        <ExportPanel grid={calendarGrid} settings={settings} isDarkMode={isDarkMode} />
-      </div>
-    </main>
+        {/* Export Panel */}
+        <div id="export-studio">
+          <ExportPanel grid={calendarGrid} settings={settings} isDarkMode={isDarkMode} />
+        </div>
+      </main>
+
+      <Footer />
+    </div>
   );
 }
