@@ -41,14 +41,6 @@ export const Footer: React.FC = () => {
             <p className="text-xs leading-relaxed opacity-85 max-w-sm">
               Design custom contribution artwork, fetch real historical GitHub graphs, generate dynamic profile badges, and export retina social media banners.
             </p>
-
-            <div className="flex items-center gap-2 pt-1">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-                All Systems Operational
-              </span>
-              <span className="text-[11px] opacity-70">v1.0 • MIT Licensed</span>
-            </div>
           </div>
 
           {/* Column 2: Developer Tools (3 cols) */}
