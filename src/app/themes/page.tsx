@@ -87,11 +87,11 @@ export default function ThemesPage() {
               }`}>
                 <span className="text-xs text-slate-400 font-mono">5 Intensity Levels</span>
                 <Link
-                  href={`/?theme=${theme.id}`}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-purple-500 text-white font-bold text-xs hover:scale-105 transition-all shadow-md"
+                  href={`/tools/art-studio?theme=${encodeURIComponent(theme.id)}`}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs hover:scale-105 transition-all shadow-md"
                 >
                   <Play className="h-3.5 w-3.5 fill-white" />
-                  <span>Apply Theme</span>
+                  <span>Apply to Art Studio</span>
                 </Link>
               </div>
             </div>
