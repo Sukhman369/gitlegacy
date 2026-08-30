@@ -162,6 +162,17 @@ export const Footer: React.FC = () => {
             </a>
           </div>
         </div>
+
+        {/* Experimental Big Typography Branding */}
+        <div className="pt-6 sm:pt-10 pb-2 overflow-hidden select-none pointer-events-none text-center">
+          <div className={`font-mono font-black tracking-tighter text-[13.5vw] leading-[0.8] uppercase bg-gradient-to-b ${
+            isDarkMode
+              ? 'from-slate-800/70 via-slate-800/20 to-transparent text-transparent bg-clip-text'
+              : 'from-slate-300/80 via-slate-200/30 to-transparent text-transparent bg-clip-text'
+          }`}>
+            GITLEGACY
+          </div>
+        </div>
       </div>
 
       {/* Sponsor Modal */}
