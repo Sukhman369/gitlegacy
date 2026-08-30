@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { useTheme } from '../context/ThemeContext';
 import {
@@ -14,6 +14,10 @@ import {
   Copy,
   Check,
 } from 'lucide-react';
+import {
+  createYearlyCalendarGrid,
+  applyPatternToCalendar,
+} from '../lib/calendar-engine';
 
 export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
   const { isDarkMode } = useTheme();
@@ -21,6 +25,23 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
   // Interactive Bento State
   const [bentoWord, setBentoWord] = useState('OCTO');
   const [copiedShield, setCopiedShield] = useState<string | null>(null);
+
+  const currentYear = new Date().getFullYear();
+  const bentoGrid = useMemo(() => {
+    const raw = createYearlyCalendarGrid(currentYear);
+    return applyPatternToCalendar(raw, {
+      text: bentoWord,
+      year: currentYear,
+      intensityMaxCommits: 5,
+      letterSpacing: 1,
+      wordSpacing: 3,
+      alignment: 'center',
+      columnOffset: 0,
+      themeId: 'github-dark',
+      drawingMode: 'select',
+      drawIntensityLevel: 4,
+    });
+  }, [bentoWord, currentYear]);
 
   const handleCopyShield = (shieldName: string) => {
     setCopiedShield(shieldName);
@@ -100,25 +121,34 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
                 </div>
               </div>
 
-              {/* Mini Simulated Pixel Strip */}
-              <div className="flex gap-1 overflow-hidden py-1 justify-center">
-                {Array.from({ length: 28 }).map((_, col) => (
-                  <div key={col} className="flex flex-col gap-1">
-                    {Array.from({ length: 5 }).map((_, row) => {
-                      const isLit = (col + row) % 3 === 0 || (col * row) % 4 === 1;
+              {/* Dynamic 53-Week Real Pixel Matrix */}
+              <div className="w-full select-none overflow-hidden py-1">
+                <svg
+                  viewBox="0 0 530 70"
+                  className="w-full h-auto block"
+                  style={{ shapeRendering: 'geometricPrecision' }}
+                >
+                  {bentoGrid.weeks.map((week) =>
+                    week.days.map((day) => {
+                      const isLit = day.level > 0;
+                      const fill = isLit
+                        ? isDarkMode ? '#39d353' : '#216e39'
+                        : isDarkMode ? 'rgba(255, 255, 255, 0.07)' : 'rgba(0, 0, 0, 0.08)';
                       return (
-                        <div
-                          key={row}
-                          className={`w-2.5 h-2.5 transition-colors ${
-                            isLit
-                              ? isDarkMode ? 'bg-emerald-400' : 'bg-emerald-600'
-                              : isDarkMode ? 'bg-slate-800' : 'bg-slate-200'
-                          }`}
+                        <rect
+                          key={day.date}
+                          x={week.weekIndex * 10}
+                          y={day.dayOfWeek * 10}
+                          width={8}
+                          height={8}
+                          rx={0}
+                          fill={fill}
+                          className="transition-colors duration-150"
                         />
                       );
-                    })}
-                  </div>
-                ))}
+                    })
+                  )}
+                </svg>
               </div>
             </div>
           </div>
