@@ -33,7 +33,7 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
       {showTitle && (
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
           <div>
-            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-2 ${
+            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-2 whitespace-nowrap ${
               isDarkMode
                 ? 'bg-slate-900 border border-slate-800 text-emerald-400'
                 : 'bg-slate-100 border border-slate-200 text-emerald-700'
@@ -63,19 +63,14 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
             : 'bg-white border-slate-200 hover:border-emerald-500/50 shadow-sm'
         }`}>
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className={`p-2.5 rounded-xl border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-emerald-400' : 'bg-slate-100 border-slate-200 text-emerald-600'}`}>
-                  <Palette className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold">Contribution Art Planner</h3>
-                  <p className="text-xs text-slate-400">53-Week Pixel Matrix Engine</p>
-                </div>
+            <div className="flex items-center gap-2.5">
+              <div className={`p-2.5 rounded-xl border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-emerald-400' : 'bg-slate-100 border-slate-200 text-emerald-600'}`}>
+                <Palette className="w-5 h-5" />
               </div>
-              <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                Live Interactive
-              </span>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold">Contribution Art Planner</h3>
+                <p className="text-xs text-slate-400">53-Week Pixel Matrix Engine</p>
+              </div>
             </div>
 
             <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -145,19 +140,14 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
             : 'bg-white border-slate-200 hover:border-cyan-500/50 shadow-sm'
         }`}>
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className={`p-2.5 rounded-xl border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-cyan-400' : 'bg-slate-100 border-slate-200 text-cyan-600'}`}>
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold">Badge & Shield Studio</h3>
-                  <p className="text-xs text-slate-400">150+ Verified Shields</p>
-                </div>
+            <div className="flex items-center gap-2.5">
+              <div className={`p-2.5 rounded-xl border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-cyan-400' : 'bg-slate-100 border-slate-200 text-cyan-600'}`}>
+                <ShieldCheck className="w-5 h-5" />
               </div>
-              <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                1-Click Basket
-              </span>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold">Badge & Shield Studio</h3>
+                <p className="text-xs text-slate-400">150+ Verified Shields</p>
+              </div>
             </div>
 
             <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -235,19 +225,14 @@ export function ToolsHubGrid({ showTitle = true }: { showTitle?: boolean }) {
             : 'bg-white border-slate-200 hover:border-amber-500/50 shadow-sm'
         }`}>
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className={`p-2 rounded-xl border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-amber-400' : 'bg-slate-100 border-slate-200 text-amber-600'}`}>
-                  <LayoutTemplate className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-sm sm:text-base font-bold">Preset Patterns Gallery</h4>
-                  <p className="text-xs text-slate-400">40+ Curated Grid Templates</p>
-                </div>
+            <div className="flex items-center gap-2.5">
+              <div className={`p-2 rounded-xl border ${isDarkMode ? 'bg-slate-950 border-slate-800 text-amber-400' : 'bg-slate-100 border-slate-200 text-amber-600'}`}>
+                <LayoutTemplate className="w-5 h-5" />
               </div>
-              <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                1-Click Studio Load
-              </span>
+              <div>
+                <h4 className="text-sm sm:text-base font-bold">Preset Patterns Gallery</h4>
+                <p className="text-xs text-slate-400">40+ Curated Grid Templates</p>
+              </div>
             </div>
 
             <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>

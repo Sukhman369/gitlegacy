@@ -136,9 +136,9 @@ export default function ArtStudioClient({ initialSettings }: ArtStudioClientProp
     <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-10 space-y-8">
       {/* Page Hero Header */}
       <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
           <Palette className="w-4 h-4" />
-          <span>GitLegacy Sub-Tool</span>
+          <span>Interactive 53-Week Art Studio</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black tracking-tight">
           Contribution Art <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Studio & Planner</span>

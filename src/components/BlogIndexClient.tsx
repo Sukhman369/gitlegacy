@@ -39,7 +39,7 @@ export function BlogIndexClient() {
         {/* Header Hero */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold uppercase tracking-wider ${
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold uppercase tracking-wider whitespace-nowrap ${
               isDarkMode
                 ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
                 : 'bg-emerald-50 border-emerald-200 text-emerald-700'

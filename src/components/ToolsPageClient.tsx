@@ -22,7 +22,7 @@ function ToolsContent() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-12 space-y-12">
         {/* Tools Page Hero */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
             <Sparkles className="w-4 h-4" />
             <span>Complete Developer Suite</span>
           </div>
@@ -50,7 +50,7 @@ function ToolsContent() {
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
                 <HeartHandshake className="w-4 h-4" />
                 <span>Open Source Community</span>
               </div>

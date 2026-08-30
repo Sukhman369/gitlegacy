@@ -22,7 +22,7 @@ export default function ThemesPage() {
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-10 w-full space-y-10">
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold uppercase tracking-wider ${
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold uppercase tracking-wider whitespace-nowrap ${
               isDarkMode
                 ? 'bg-purple-500/10 border-purple-500/20 text-purple-400'
                 : 'bg-purple-50 border-purple-200 text-purple-700'

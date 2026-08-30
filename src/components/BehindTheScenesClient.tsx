@@ -52,7 +52,7 @@ export function BehindTheScenesClient() {
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-12 sm:py-16 space-y-16 sm:space-y-20">
         {/* Hero Section */}
         <div className="text-center space-y-5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
             <Compass className="w-4 h-4" />
             <span>Behind the Scene • The Origin Story</span>
           </div>

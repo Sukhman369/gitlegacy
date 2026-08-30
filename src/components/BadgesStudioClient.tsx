@@ -274,7 +274,7 @@ export function BadgesStudioClient() {
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-8 space-y-10">
         {/* Page Hero Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30 whitespace-nowrap">
             <Shield className="w-3.5 h-3.5" />
             <span>Developer Badges & Shields Studio</span>
           </div>
