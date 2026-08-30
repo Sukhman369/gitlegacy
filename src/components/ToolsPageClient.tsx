@@ -6,7 +6,7 @@ import { Header } from './Header';
 import { Footer } from './Footer';
 import { ToolsHubGrid } from './ToolsHubGrid';
 import { useTheme } from '../context/ThemeContext';
-import { Sparkles, HeartHandshake, ArrowRight, Code2, ExternalLink } from 'lucide-react';
+import { Sparkles, Terminal, GitPullRequest, BookOpen, ArrowRight, ExternalLink } from 'lucide-react';
 
 function ToolsContent() {
   const { isDarkMode } = useTheme();
@@ -39,61 +39,81 @@ function ToolsContent() {
           <ToolsHubGrid showTitle={false} />
         </div>
 
-        {/* Open Source Contribution Banner */}
-        <section className={`relative overflow-hidden p-8 sm:p-10 rounded-3xl border shadow-2xl transition-all ${
+        {/* Open Source & Extensibility Section - Sharp Boxy Developer Architecture */}
+        <section className={`border-2 border-l-4 border-l-emerald-500 p-6 sm:p-8 transition-all ${
           isDarkMode
-            ? 'bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border-slate-800'
-            : 'bg-gradient-to-br from-emerald-50/50 via-white to-teal-50/30 border-slate-200 shadow-sm'
+            ? 'bg-slate-900/90 border-emerald-500/30'
+            : 'bg-white border-emerald-300 shadow-md'
         }`}>
-          {/* Background Ambient Glow */}
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
-
-          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="space-y-4 max-w-2xl text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
-                <HeartHandshake className="w-4 h-4" />
-                <span>Open Source Community</span>
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            <div className="space-y-4 max-w-2xl">
+              <div className={`inline-flex items-center gap-2 px-3 py-1 border text-xs font-mono font-bold uppercase tracking-wider ${
+                isDarkMode
+                  ? 'bg-emerald-950/60 text-emerald-400 border-emerald-500/40'
+                  : 'bg-emerald-50 text-emerald-900 border-emerald-300'
+              }`}>
+                <Terminal className="w-3.5 h-3.5" />
+                <span>Open Source & MIT Licensed</span>
               </div>
 
-              <h2 className="text-2xl sm:text-4xl font-black tracking-tight">
-                Want to Build & Add a <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">New Tool or Theme?</span>
+              <h2 className="text-2xl sm:text-3xl font-black tracking-tight font-sans">
+                Build, Fork & Extend GitLegacy
               </h2>
 
               <p className={`text-xs sm:text-sm leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-                GitLegacy is built by developers, for developers. Help us expand the platform by contributing new artwork presets, color themes, badge designs, or custom developer utilities!
+                GitLegacy is built with Next.js, TypeScript, and TailwindCSS. The platform is modular — easily contribute 53-week matrix algorithms, color palettes, tech badges, or social export layouts.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1 text-[11px] font-mono">
-                <span className="px-2.5 py-1 rounded-lg border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">🎨 Matrix Presets</span>
-                <span className="px-2.5 py-1 rounded-lg border bg-teal-500/10 text-teal-400 border-teal-500/20">🎨 Color Themes</span>
-                <span className="px-2.5 py-1 rounded-lg border bg-cyan-500/10 text-cyan-400 border-cyan-500/20">🛡️ Tech Shields</span>
-                <span className="px-2.5 py-1 rounded-lg border bg-purple-500/10 text-purple-400 border-purple-500/20">⚡ Commit Generators</span>
+              {/* Developer Specs Pillars */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <div className={`p-3 border font-mono ${
+                  isDarkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-slate-50 border-slate-200'
+                }`}>
+                  <span className="text-[10px] text-emerald-500 font-bold block mb-0.5">01 // MATRIX ENGINE</span>
+                  <span className="text-xs text-slate-300 font-bold">5x7 Pixel Font Glyphs</span>
+                </div>
+
+                <div className={`p-3 border font-mono ${
+                  isDarkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-slate-50 border-slate-200'
+                }`}>
+                  <span className="text-[10px] text-emerald-500 font-bold block mb-0.5">02 // PALETTES</span>
+                  <span className="text-xs text-slate-300 font-bold">5-Level Hex Arrays</span>
+                </div>
+
+                <div className={`p-3 border font-mono ${
+                  isDarkMode ? 'bg-slate-950/80 border-slate-800' : 'bg-slate-50 border-slate-200'
+                }`}>
+                  <span className="text-[10px] text-emerald-500 font-bold block mb-0.5">03 // BADGE STUDIO</span>
+                  <span className="text-xs text-slate-300 font-bold">Shields.io Proxy API</span>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto">
-              <Link
-                href="/contribute"
-                className="py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 hover:scale-105 transition-all text-center"
-              >
-                <span>Read Contribute Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
+            {/* Action Buttons - Sharp Rectangular Styling */}
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto shrink-0">
               <a
                 href="https://github.com/Sukhman369/gitlegacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`py-3.5 px-6 rounded-2xl border text-xs font-bold flex items-center justify-center gap-2 transition-all hover:scale-105 text-center ${
+                className="py-3 px-6 border border-emerald-400/60 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-transform hover:scale-[1.02] active:scale-95 text-center"
+              >
+                <GitPullRequest className="w-4 h-4" />
+                <span>Fork on GitHub</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+              </a>
+
+              <Link
+                href="/contribute"
+                className={`py-3 px-6 border font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all hover:scale-[1.02] text-center ${
                   isDarkMode
-                    ? 'bg-slate-900 border-slate-800 hover:bg-slate-800 text-slate-200'
-                    : 'bg-white border-slate-300 hover:bg-slate-100 text-slate-800'
+                    ? 'bg-slate-950 border-slate-700 hover:bg-slate-800 text-slate-200 hover:text-white'
+                    : 'bg-slate-50 border-slate-300 hover:bg-slate-100 text-slate-800 shadow-xs'
                 }`}
               >
-                <Code2 className="w-4 h-4 text-emerald-400" />
-                <span>GitHub Repository</span>
-                <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-              </a>
+                <BookOpen className="w-4 h-4 text-emerald-500" />
+                <span>Contribution Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
         </section>
